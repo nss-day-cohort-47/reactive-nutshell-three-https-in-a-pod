@@ -1,12 +1,11 @@
 //Logan Demmy - Entry form for new Articles
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { createEvent } from "../../modules/eventsManager"
 
 export const EventEntry = () => {
     const [events, setEvent] = useState({
-        id: "",
         userId: JSON.parse(sessionStorage.getItem("nutshell_user")),
     }) 
 
@@ -14,10 +13,7 @@ export const EventEntry = () => {
 
     const handleInputChange = (event) => {
         const newEvent = {...events};
-        let selectedValue = event.target.selectedValue
-        if (event.target.id.includes("Id")) {
-            selectedValue = parseInt(selectedValue)
-        }
+        let selectedValue = event.target.value
         newEvent[event.target.id] = selectedValue
         setEvent(newEvent)
     }
@@ -39,6 +35,7 @@ export const EventEntry = () => {
                             id="title" 
                             onChange={handleInputChange} 
                             autoFocus 
+                            required
                             className="eventform"
                             placeholder="Title"
                             value={events.title} />
@@ -47,6 +44,7 @@ export const EventEntry = () => {
                     <label htmlFor="message">Event Description</label>
                     <input  type="text" 
                             id="message" 
+                            required
                             onChange={handleInputChange} 
                             className="eventform"
                             placeholder="message"
@@ -56,6 +54,7 @@ export const EventEntry = () => {
                     <label htmlFor="locations">Event Location</label>
                     <input  type="text" 
                             id="location" 
+                            required
                             onChange={handleInputChange} 
                             className="eventform"
                             placeholder="location"
@@ -65,6 +64,7 @@ export const EventEntry = () => {
                     <label htmlFor="eventdate">Event Date</label>
                     <input  type="date" 
                             id="eventdate" 
+                            required
                             onChange={handleInputChange} 
                             className="eventform"
                             value={events.eventdate} />
@@ -73,6 +73,7 @@ export const EventEntry = () => {
                     <label htmlFor="eventtime">Event Time</label>
                     <input  type="time" 
                             id="eventtime" 
+                            required
                             onChange={handleInputChange} 
                             className="eventform"
                             value={events.eventtime} />                 
