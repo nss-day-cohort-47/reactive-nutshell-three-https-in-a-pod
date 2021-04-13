@@ -36,34 +36,39 @@ export const FriendsList = () => {
     }
 
     const handleInputChange = (event) => {
-        if (event.target.value !== "") {
-            let stateToChange = {...search};
-            stateToChange = event.target.value
+        // if (event.target.value !== "") {
+            // let stateToChange = {...search}
+            let stateToChange = event.target.value
             setSearch(stateToChange.toLowerCase())
-        }
+        
 
     }
 
     const results = (searchString) => {
-        getAllUsers()
-        .then(response => {
-            let matchingUsers = response.filter(user => {
-                return user.name.toLowerCase().includes(searchString)
-            })
-            setResult(matchingUsers)
-        }) 
+        if(searchString.length > 0) {
+            console.log("searchString", searchString)
+            getAllUsers()
+            .then(response => {
+    
+                let matchingUsers = response.filter(user => {
+                    return user.name.toLowerCase().includes(searchString)
+                })
+                // console.log("matching users", matchingUsers)
+     
+                setResult(matchingUsers)
+            }) 
+        } 
 
     }
 
     useEffect(() => {
         getLoggedFriends()
-    }, [result])
+    }, [])
 
     useEffect(() => {
         results(search)
-    }, [])
+    }, [search])
     
-    console.log("search", results(search))
     
     return (
         <section className="friendList">
@@ -75,9 +80,11 @@ export const FriendsList = () => {
                    required 
                    onChange={handleInputChange}
                    placeholder="Search For a Friend"
+                   
                     />
             <div className="searchResults">
-                {result.map(res => 
+                {result.length === 0 ? <div></div> :
+                 result.map(res => 
                     <SearchCard 
                     key={res.id}
                     res={res}
