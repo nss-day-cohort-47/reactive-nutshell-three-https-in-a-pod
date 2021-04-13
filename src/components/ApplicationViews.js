@@ -4,6 +4,7 @@ import { ArticleList } from "./articles/ArticleList"
 import { FriendsList } from "./friends/FriendsList"
 import { TaskList } from "./tasks/TaskList"
 import { EventList } from "./events/EventList"
+import { TaskForm } from "./tasks/TaskForm"
 
 export const ApplicationViews = () => {
   return (
@@ -18,9 +19,14 @@ export const ApplicationViews = () => {
       <Route path="/messages">
         {/* Render the component for the messages */}
       </Route>
-      <Route path="/tasks">
+      <Route exact path="/tasks">
         <TaskList />
       </Route>
+
+      <Route path="/tasks/create">
+        <TaskForm />
+      </Route>
+
       <Route path="/events">
         <EventList />
       </Route>
