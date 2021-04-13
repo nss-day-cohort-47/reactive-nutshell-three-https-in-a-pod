@@ -6,7 +6,7 @@ export const ArticleCard = ({article, handleDeleteArticle}) => {
     
     return (
     <>    
-        <h4>Posted by: {}</h4>
+        <h4>Posted by: {article.user.name}</h4>
         <article className="postedArticle">
             <h6>{article.title}</h6>
             <p>{article.synopsis}</p>
