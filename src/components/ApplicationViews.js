@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { ArticleList } from "./articles/ArticleList"
 import { FriendsList } from "./friends/FriendsList"
 import { EventList } from "./events/EventList"
+import { EventEntry } from "./events/EventForm"
 
 export const ApplicationViews = () => {
   return (
@@ -20,8 +21,12 @@ export const ApplicationViews = () => {
       <Route path="/tasks">
         {/* Render the component for the user's tasks */}
       </Route>
-      <Route path="/events">
+      <Route exact path="/events">
         <EventList />
+      </Route>
+      
+      <Route exact path="/events/create">
+        <EventEntry />
       </Route>
     </>
   )

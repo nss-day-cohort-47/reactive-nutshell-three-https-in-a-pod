@@ -9,7 +9,7 @@ export const EventCard = ({event, deleteSetEvent}) => {
         <article className="event-card">
             <h3 className="event-title">{event.title}</h3>
             <p className="event-message">{event.message}</p>
-            <p className="event-eventdate">Time: {event.eventdate}</p>
+            <p className="event-eventdate">Date: {event.eventdate} at {event.eventtime} </p>
             <p className="event-location">Location: {event.location}</p>
             <p className="event-posted">Posted by: {event.user.name} </p>
             <Link to={`/event/${event.id}/edit`}>

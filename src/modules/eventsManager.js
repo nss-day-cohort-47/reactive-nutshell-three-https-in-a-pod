@@ -15,7 +15,7 @@ export const deleteEvent = (eventId) => {
             "Content-Type": "application/json"
         }
     })
-        .then(response => response.json())
+        .then(response => response.json()) 
 }
 
 //function to post new articles
