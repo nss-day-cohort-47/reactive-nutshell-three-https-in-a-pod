@@ -49,16 +49,16 @@ export const FriendsList = () => {
             console.log("searchString", searchString)
             getAllUsers()
             .then(response => {
-    
                 let matchingUsers = response.filter(user => {
-                    return user.name.toLowerCase().includes(searchString)
+                    if(user.name.toLowerCase().includes(searchString) && user.id !== loggedInUser) {
+                        return true
+                    }
                 })
                 // console.log("matching users", matchingUsers)
-     
                 setResult(matchingUsers)
             }) 
         } 
-
+        else setResult([])
     }
 
     useEffect(() => {
