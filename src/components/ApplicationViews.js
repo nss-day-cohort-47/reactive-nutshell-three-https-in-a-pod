@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { ArticleList } from "./articles/ArticleList"
 import { FriendsList } from "./friends/FriendsList"
+import { EventList } from "./events/EventList"
 
 export const ApplicationViews = () => {
   return (
@@ -20,7 +21,7 @@ export const ApplicationViews = () => {
         {/* Render the component for the user's tasks */}
       </Route>
       <Route path="/events">
-        {/* Render the component for the user's events */}
+        <EventList />
       </Route>
     </>
   )
