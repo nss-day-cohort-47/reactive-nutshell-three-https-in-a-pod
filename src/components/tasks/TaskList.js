@@ -1,7 +1,7 @@
 // Ethan Mathis -- purpose = to fetch the loggedInUser tasks and return them as a list of TaskCards
 
 import React, { useEffect, useState } from 'react'
-import { deleteTask, getTasksById } from "../../modules/TaskManager"
+import { deleteTask, getTasksById, updateTask } from "../../modules/TaskManager"
 import { TaskCard } from "./TaskCard"
 import { useHistory } from "react-router-dom"
 
@@ -18,18 +18,36 @@ export const TaskList = () => {
     const getLoggedTasks = () => {
         return getTasksById(loggedInUser)
         .then(userTasks => {
-            setTasks(userTasks)
-        })
-    }
+            // filter through all of the users tasks and find the ones whose isComplete === false and setTasks to only those
+        let unfinished = userTasks.filter(task => task.isComplete === false)
+        setTasks(unfinished)
+    })
+}
 
+    // handler for deleting unwanted tasks
     const handleDelete = (id) => {
         deleteTask(id).then(() => 
         getLoggedTasks()
         )
     }
 
-    // const handleAddTask = () => {}
-
+    // this is for the checkbox. when the checkbox is clicked, it makes a copy of that task and sets isComplete = true.
+    // it then passes the new object into the updateTask function which makes a PUT request to json server.
+    // finally it calls getLoggedTasks again to render the page with the updated data
+    const handleUpdate = (task) => {
+        let completedTask = {...task}
+        const newTask = {
+            id: completedTask.id,
+            userId: loggedInUser,
+            title: completedTask.title,
+            task: completedTask.task,
+            completedby: completedTask.completedby,
+            isComplete: true
+        }
+        console.log(newTask)
+        updateTask(newTask)
+        .then(() => getLoggedTasks())
+    }
     
 
     useEffect(() => {
@@ -42,11 +60,14 @@ export const TaskList = () => {
                     onClick={() => history.push("/tasks/create")}>
                         Add New Task</button>
             <div className="taskCard">
+                <h3>To Do List</h3>
                 {tasks.map(task => 
                     <TaskCard 
                     key={task.id}
                     task={task}
-                    handleDelete={handleDelete} />)}
+                    handleDelete={handleDelete}
+                    handleUpdate={handleUpdate}
+                     />)}
             </div>
         </section>
     )
