@@ -1,6 +1,6 @@
 //  Ethan Mathis -- purpose is to render the New Task Form and add the new task to the db on submit
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { addTask } from '../../modules/TaskManager'
 
@@ -22,8 +22,11 @@ export const TaskForm = () => {
     const history = useHistory()
 
     const handleInputChange = (event) => {
+        const newTask = {...task}
         let selectedVal = event.target.value 
-        setTask(selectedVal)
+        newTask[event.target.id] = selectedVal
+        setTask(newTask)
+        // console.log(task)
     }
 
    const handleSaveTask = (event) => {
@@ -40,7 +43,10 @@ export const TaskForm = () => {
            <fieldset>
                <div className="formTitle">
                    <label htmlFor="title">Title:</label>
-                   <input type="text" 
+                   <input type="text"
+                          id="title"
+                          className="title" 
+                          required
                           autoFocus 
                           placeholder="Name Your Task"
                           value={task.title}
@@ -51,6 +57,9 @@ export const TaskForm = () => {
                <div className="formTask">
                    <label htmlFor="task">Task Description:</label>
                    <input type="text" 
+                          id="task"
+                          className="task"
+                          required
                           autoFocus 
                           placeholder="Task Details"
                           value={task.task}
@@ -60,7 +69,7 @@ export const TaskForm = () => {
            <fieldset>
                <div className="formCompleteDate">
                    <label htmlFor="title">To Be Completed By:</label>
-                   <input type="date" 
+                   <input type="date"
                           value={task.completedby}
                           onChange={handleInputChange}  />
                </div>
