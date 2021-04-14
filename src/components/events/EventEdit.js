@@ -84,14 +84,14 @@ export const EventEditForm = () => {
                 </div>
                 <div>  
                     <label htmlFor="eventdate">Event Date</label>
-                    <input  type="date" 
+                    <input  type="datetime-local" 
                             id="eventdate" 
                             required
                             onChange={handleFieldChange} 
                             className="eventform"
                             value={event.eventdate} />
                 </div>
-                <div> 
+                {/* <div> 
                     <label htmlFor="eventtime">Event Time</label>
                     <input  type="time" 
                             id="eventtime" 
@@ -99,7 +99,7 @@ export const EventEditForm = () => {
                             onChange={handleFieldChange} 
                             className="eventform"
                             value={event.eventtime} />                 
-                </div>
+                </div> */}
                 <div className="btn">
                     <button
                         type="button" disabled={isLoading}
