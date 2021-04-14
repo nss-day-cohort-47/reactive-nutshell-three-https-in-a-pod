@@ -2,7 +2,7 @@
 import React from "react"
 
 export const ArticleCard = ({article, handleDeleteArticle}) => {
-    console.log(article)
+    
     
     return (
     <>    

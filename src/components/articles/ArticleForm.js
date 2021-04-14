@@ -20,38 +20,25 @@ export const ArticleForm = () => {
     const handleControlledInputChange = (event) => {
         const newArticle = { ...article }
         let selectedValue = event.target.value
-        if (event.target.id.includes("Id")) {
-            selectedValue = parseInt(selectedValue)
-        }
+        
         newArticle[event.target.id] = selectedValue
+        console.log("new", newArticle)
         setArticle(newArticle)
     }
 
     const handleSaveArticle = (event) => {
-        // event.preventDefault()
-        const title = article.title
-        const synopsis = article.synopsis
-        const url = article.url
+        event.preventDefault()
+        
 
-        if (title === "" || synopsis === "" || url === "") {
+        if (article.title === "" || article.synopsis === "" || article.url === "") {
             window.alert("Please fill in all fields")
         } else {
+            setIsLoading(true)
             addArticle(article)
             .then(() => history.push("/"))
             
         }
     }
-
-    const getCurrentArticle = () => {
-        return getUserArticles(loggedInUser)
-            .then(articlesFromAPI => {
-                setArticle(articlesFromAPI)
-            })
-    }
-
-    useEffect(() => {
-        getCurrentArticle()
-    }, [])
 
     return (
         <form className="articleForm">
@@ -69,7 +56,7 @@ export const ArticleForm = () => {
                     <label htmlFor="url">URL:</label>
                     <input type="text" id="url" onChange={handleControlledInputChange} required className="form-control" placeholder="URL" value={article.url} />
                 </div>
-                <button type="button" className="btn" onClick={handleSaveArticle}>
+                <button type="button" className="btn" onClick={handleSaveArticle} disabled={isLoading}>
                 Save Article
                 </button>
             </fieldset>

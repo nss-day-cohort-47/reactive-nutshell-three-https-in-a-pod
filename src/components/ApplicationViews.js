@@ -12,7 +12,7 @@ export const ApplicationViews = () => {
       <Route exact path="/">
         <ArticleList />
       </Route>
-      <Route path="/articles/create">
+      <Route exact path="/articles/create">
         <ArticleForm />
       </Route>
       <Route path="/friends">
