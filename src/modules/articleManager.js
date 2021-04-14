@@ -1,8 +1,8 @@
-//Hunter Preast, Ethan Mathis, Logan Demmy-- Fetch calls relating to articles
+//Hunter Preast-- Fetch calls relating to articles
 const url = "http://localhost:8088"
 
 export const getUserArticles = (id) => {
-    return fetch(`${url}/articles?currentUserId${id}&_expand=user`)
+    return fetch(`${url}/articles?userId=${id}&_expand=user`)
     .then(response => response.json())
 }
 

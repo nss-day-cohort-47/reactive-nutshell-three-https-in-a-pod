@@ -4,6 +4,7 @@ import { ArticleList } from "./articles/ArticleList"
 import { FriendsList } from "./friends/FriendsList"
 import { TaskList } from "./tasks/TaskList"
 import { EventList } from "./events/EventList"
+import { ArticleForm } from "./articles/ArticleForm"
 import { EventEntry } from "./events/EventForm"
 import { EventEditForm } from "./events/EventEdit"
 import { TaskForm } from "./tasks/TaskForm"
@@ -15,6 +16,9 @@ export const ApplicationViews = () => {
 
       <Route exact path="/">
         <ArticleList />
+      </Route>
+      <Route exact path="/articles/create">
+        <ArticleForm />
       </Route>
       <Route path="/friends">
         <FriendsList />
