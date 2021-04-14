@@ -2,8 +2,8 @@
 const url = "http://localhost:8088"
 
 //get all events including the user who posted them
-export const getAllEvents = () => {
-    return fetch(`${url}/events?_expand=user`)
+export const getEventsById = (id) => {
+    return fetch(`${url}/events?userId=${id}&_expand=user`)
     .then(response => response.json())    
 }
 

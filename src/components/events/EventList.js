@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react'
 import { EventCard } from './EventCard'
-import { getAllEvents, deleteEvent } from '../../modules/eventsManager'
+import { getEventsById, deleteEvent } from '../../modules/eventsManager'
 import { useHistory } from 'react-router-dom'
+import { getUserFriends } from '../../modules/friendsListManager'
 
 export const EventList = () => {
     const [events, setEvents] = useState([])
@@ -38,17 +39,26 @@ export const EventList = () => {
       let shortend = myDate.toISOString()
       return shortend;
     }
-    
+    let friendEvents = []
     const getEvents = () => {
-        return getAllEvents().then(eventsFromApi => {
-            const sortedEvents = eventsFromApi.sort(compareValues('eventdate', 'asc'))
-            sortedEvents.filter(event => event.eventdate < timeconverter(Date.now()))
-            setEvents(sortedEvents)
+        return getUserFriends(loggedInUser).then(friends => {
+          friends.forEach(friend => {
+            getEventsById(friend.user.id).then(
+              events => {
+                friendEvents = friendEvents.concat(events)
+                console.log(friendEvents)})
+            .then(() => getEventsById(loggedInUser)
+            .then(events => { 
+              let allEvents = []
+              allEvents = friendEvents.concat(events)
+              const sortedEvents = allEvents.sort(compareValues('eventdate', 'asc'))
+              sortedEvents.filter(event => event.eventdate < timeconverter(Date.now()))
+              setEvents(sortedEvents)
+            })
+            )
+          })
         })
     }
-
-
-
     const deleteSetEvent = (id) => {
         deleteEvent(id)
         .then(() => getEvents())
