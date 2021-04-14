@@ -24,6 +24,11 @@ export const EventEntry = () => {
         createEvent(events).then(() => history.push('/events'))
     }
 
+    const handleCancelSave = (click) => {
+        click.preventDefault()
+        history.push('/events')
+    }
+
 
     return (
         <form className="eventform">
@@ -62,7 +67,7 @@ export const EventEntry = () => {
                 </div>
                 <div>  
                     <label htmlFor="eventdate">Event Date</label>
-                    <input  type="date" 
+                    <input  type="datetime-local" 
                             id="eventdate" 
                             required
                             onChange={handleInputChange} 
@@ -82,6 +87,10 @@ export const EventEntry = () => {
             <button className="btn btn-primary"
 				onClick={handleSaveEvent}>
 				Save Entry
+            </button>
+            <button className="btn btn-primary"
+				onClick={handleCancelSave}>
+				Cancel
             </button>
         </form>
     )

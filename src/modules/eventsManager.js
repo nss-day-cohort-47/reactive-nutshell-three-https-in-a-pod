@@ -18,7 +18,7 @@ export const deleteEvent = (eventId) => {
         .then(response => response.json()) 
 }
 
-//function to post new articles
+//function to post new event
 export const createEvent = eventObj => {
     return fetch(`${url}/events`, {
         method: "POST",
@@ -29,4 +29,23 @@ export const createEvent = eventObj => {
         
     })
         .then(response => response.json())
+}
+
+//function to update event
+export const editEvent = eventObj => {
+    return fetch(`${url}/events/${eventObj.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(eventObj)
+        
+    })
+        .then(response => response.json())
+}
+
+//function to get single event
+export const getEventById = id => {
+    return fetch(`${url}/events/${id}`)
+    .then(response => response.json()) 
 }
