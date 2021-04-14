@@ -68,8 +68,9 @@ export const TaskForm = () => {
            </fieldset>
            <fieldset>
                <div className="formCompleteDate">
-                   <label htmlFor="title">To Be Completed By:</label>
+                   <label htmlFor="completedby">To Be Completed By:</label>
                    <input type="date"
+                          id="completedby"
                           value={task.completedby}
                           onChange={handleInputChange}  />
                </div>
