@@ -12,6 +12,7 @@ export const ArticleList = () => {
 
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
+
     const getCurrentArticle = () => {
         return getUserArticles(loggedInUser)
             .then(articlesFromAPI => {
@@ -28,6 +29,11 @@ export const ArticleList = () => {
     useEffect(() => {
         getCurrentArticle()
     }, [])
+
+    function biggestToSmallest(a, b) {
+        return b.timestamp - a.timestamp;
+    }
+    articles.sort(biggestToSmallest);
 
     return (
         <section className="articleList">

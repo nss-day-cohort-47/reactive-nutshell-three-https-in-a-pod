@@ -22,7 +22,7 @@ export const ArticleForm = () => {
         let selectedValue = event.target.value
         
         newArticle[event.target.id] = selectedValue
-        console.log("new", newArticle)
+        
         setArticle(newArticle)
     }
 
