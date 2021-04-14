@@ -10,7 +10,7 @@ export const EventEntry = () => {
         message: "",
         eventdate: "",
         location: "",
-        eventtime: ""
+        // eventtime: ""
     }) 
 
     const history = useHistory();
@@ -75,14 +75,14 @@ export const EventEntry = () => {
                 </div>
                 <div>  
                     <label htmlFor="eventdate">Event Date</label>
-                    <input  type="date" 
+                    <input  type="datetime-local" 
                             id="eventdate" 
                             required
                             onChange={handleInputChange} 
                             className="eventform"
                             value={events.eventdate} />
                 </div>
-                <div> 
+                {/* <div> 
                     <label htmlFor="eventtime">Event Time</label>
                     <input  type="time" 
                             id="eventtime" 
@@ -90,7 +90,7 @@ export const EventEntry = () => {
                             onChange={handleInputChange} 
                             className="eventform"
                             value={events.eventtime} />                 
-                </div>
+                </div> */}
             </fieldset>
             <button className="btn btn-primary"
 				onClick={handleSaveEvent}>

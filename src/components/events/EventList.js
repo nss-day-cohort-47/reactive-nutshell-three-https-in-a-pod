@@ -32,12 +32,17 @@ export const EventList = () => {
           );
         };
     }
-
-
-
+    const timeconverter = (time) => {
+      console.log(time)
+      let myDate = new Date(time)
+      let shortend = myDate.toISOString()
+      return shortend;
+    }
+    
     const getEvents = () => {
         return getAllEvents().then(eventsFromApi => {
             const sortedEvents = eventsFromApi.sort(compareValues('eventdate', 'asc'))
+            sortedEvents.filter(event => event.eventdate < timeconverter(Date.now()))
             setEvents(sortedEvents)
         })
     }
