@@ -1,5 +1,12 @@
 .event-card {
+    font-style: italic;
     margin: 2em;
-    border: 1 solid black;
-    background-color: bisque;
+    border: 1px solid black;
+    background-color: cornsilk;
 }
+
+.user-event-card {
+    margin: 2em;
+    border: 1px solid black;
+}
+
