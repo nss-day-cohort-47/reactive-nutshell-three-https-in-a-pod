@@ -13,24 +13,32 @@ export const ArticleList = () => {
     const history = useHistory();
 
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
-
-
-    const getCurrentArticle = () => {
-        return getUserArticles(loggedInUser)
-            .then(articlesFromAPI => {
-                setArticles(articlesFromAPI)
-            })
+    
+    function numberToArray(number) {
+        let array = number.toString().split("");
+        return array.map(x => parseInt(x))
     }
-
+    let currentUser = numberToArray(loggedInUser)
+    // const getCurrentArticle = () => {
+    //     return getUserArticles(loggedInUser)
+    //     .then(articlesFromAPI => {
+    //         setArticles(articlesFromAPI)
+    //     })
+    // }
+    
     const getFriendArticles = () => {
         getUserFriends(loggedInUser)
         .then(result => {
             const friends = result
             const friendId = friends.map((elem) => elem.user.id)
-            // console.log(friendId)
-            getUserArticles(friendId)
+            const articlePublisherArray = currentUser.concat(friendId)
+            articlePublisherArray.forEach(user => { 
+            getUserArticles(user)
+                .then()
+            })
+            console.log(eachPublisher)
+            getUserArticles(eachPublisher)
             .then(friendArticlesFromAPI => {
-                console.log(friendArticlesFromAPI)
                 setFriendArticles(friendArticlesFromAPI)
             })
         })
@@ -39,13 +47,14 @@ export const ArticleList = () => {
 
     const handleDeleteArticle = (articleId) => {
         deleteArticle(articleId).then(() => 
-        getCurrentArticle()
+        // getCurrentArticle()
+        getFriendArticles()
         )
     }
 
-    useEffect(() => {
-        getCurrentArticle()
-    }, [])
+    // useEffect(() => {
+    //     getCurrentArticle()
+    // }, [])
 
     useEffect(() => {
         getFriendArticles()
