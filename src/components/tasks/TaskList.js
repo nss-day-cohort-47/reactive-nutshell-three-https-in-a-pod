@@ -1,7 +1,7 @@
 // Ethan Mathis -- purpose = to fetch the loggedInUser tasks and return them as a list of TaskCards
 
 import React, { useEffect, useState } from 'react'
-import { deleteTask, getTasksById, updateTask } from "../../modules/TaskManager"
+import { deleteTask, getTasksByUser, updateTask } from "../../modules/TaskManager"
 import { TaskCard } from "./TaskCard"
 import { useHistory } from "react-router-dom"
 
@@ -16,7 +16,7 @@ export const TaskList = () => {
 
     // returns an array of the currently logged in user's tasks
     const getLoggedTasks = () => {
-        return getTasksById(loggedInUser)
+        return getTasksByUser(loggedInUser)
         .then(userTasks => {
             // filter through all of the users tasks and find the ones whose isComplete === false and setTasks to only those
         let unfinished = userTasks.filter(task => task.isComplete === false)

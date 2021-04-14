@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import { getTasksById, updateTask } from "../../modules/TaskManager"
+import { getTaskById, updateTask } from "../../modules/TaskManager"
 
 export const TaskEditForm = () => {
     const [task, setTask] = useState({})
@@ -35,7 +35,7 @@ export const TaskEditForm = () => {
     }
 
     useEffect(() => {
-        getTasksById(taskId)
+        getTaskById(taskId)
         .then(task => {
             setTask(task)
             setIsLoading(false)

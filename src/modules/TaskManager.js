@@ -2,8 +2,13 @@
 
 const url = "http://localhost:8088"
 
-export const getTasksById = (userId) => {
+export const getTasksByUser = (userId) => {
     return fetch(`${url}/tasks?userId=${userId}&_expand=user`)
+    .then(response => response.json())
+}
+
+export const getTaskById = (id) => {
+    return fetch(`${url}/tasks/${id}`)
     .then(response => response.json())
 }
 
