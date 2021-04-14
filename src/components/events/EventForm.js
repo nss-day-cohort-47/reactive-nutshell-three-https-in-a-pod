@@ -7,6 +7,10 @@ import { createEvent } from "../../modules/eventsManager"
 export const EventEntry = () => {
     const [events, setEvent] = useState({
         userId: JSON.parse(sessionStorage.getItem("nutshell_user")),
+        message: "",
+        eventdate: "",
+        location: "",
+        eventtime: ""
     }) 
 
     const history = useHistory();
@@ -15,13 +19,17 @@ export const EventEntry = () => {
         const newEvent = {...events};
         let selectedValue = event.target.value
         newEvent[event.target.id] = selectedValue
+
         setEvent(newEvent)
     }
 
     const handleSaveEvent = (click) => {
         click.preventDefault()
         console.log(events)
-        createEvent(events).then(() => history.push('/events'))
+        if (events.title === "" || events.message === "" || events.location === "" || events.eventdate === "" || events.eventtime === "") {
+            window.alert("Please fill in all fields")
+        } else {createEvent(events).then(() => history.push('/events'))
+        }
     }
 
     const handleCancelSave = (click) => {
