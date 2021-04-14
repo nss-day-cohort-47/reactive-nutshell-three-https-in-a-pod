@@ -23,7 +23,6 @@ export const EventList = () => {
     useEffect(() => {
         getEvents();
     }, [])
-    console.log(events)
     return (
         <>
             <section className="event-content">
