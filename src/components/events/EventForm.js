@@ -67,7 +67,7 @@ export const EventEntry = () => {
                 </div>
                 <div>  
                     <label htmlFor="eventdate">Event Date</label>
-                    <input  type="datetime-local" 
+                    <input  type="date" 
                             id="eventdate" 
                             required
                             onChange={handleInputChange} 

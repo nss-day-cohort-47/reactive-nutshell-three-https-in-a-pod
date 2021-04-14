@@ -13,7 +13,7 @@ export const EventCard = ({event, deleteSetEvent}) => {
             <p className="event-location">Location: {event.location}</p>
             <p className="event-posted">Posted by: {event.user.name} </p>
             <Link to={`/events/${event.id}/edit`}>
-                <button>Edit</button>
+                <button >Edit</button>
             </Link>
             <button type="button" onClick={() => deleteSetEvent(event.id)}>Delete</button>
         </article>
