@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'react-router-dom'
 
 export const TaskCard = ({task, handleDelete, handleUpdate}) => {
 
@@ -14,7 +15,7 @@ export const TaskCard = ({task, handleDelete, handleUpdate}) => {
                                                    name="checkbox" 
                                                    
                                                    onChange={() => handleUpdate(task)} /></label>
-        
+        <Link to={`/tasks/${task.id}/edit`}><button>Edit</button></Link>
         <button type="button" className="btn btn-delete" onClick={() => handleDelete(task.id)}>Remove</button>
     </section>
     )

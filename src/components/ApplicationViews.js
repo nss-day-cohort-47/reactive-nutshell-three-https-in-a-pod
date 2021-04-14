@@ -7,6 +7,7 @@ import { EventList } from "./events/EventList"
 import { EventEntry } from "./events/EventForm"
 import { EventEditForm } from "./events/EventEdit"
 import { TaskForm } from "./tasks/TaskForm"
+import { TaskEditForm } from "./tasks/TaskEditForm"
 
 
 export const ApplicationViews = () => {
@@ -22,8 +23,13 @@ export const ApplicationViews = () => {
       <Route path="/messages">
         {/* Render the component for the messages */}
       </Route>
+
       <Route exact path="/tasks">
         <TaskList />
+      </Route>
+
+      <Route path="/tasks/:taskId(\d+)/edit">
+        <TaskEditForm />
       </Route>
 
       <Route path="/tasks/create">
