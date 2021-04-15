@@ -6,10 +6,12 @@ import { getEventsById, deleteEvent } from '../../modules/eventsManager'
 import { useHistory } from 'react-router-dom'
 import { getUserFriends } from '../../modules/friendsListManager'
 import { getCoordinates, getWeather } from '../../modules/weatherManager'
+import { WeatherCard } from './weather/WeatherCard'
 
 export const EventList = () => {
     const [events, setEvents] = useState([])
     const [weather, setWeather] = useState({})
+    const [dailyWeather, setDailyWeather] = useState(false)
 
     const history = useHistory()
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
@@ -54,6 +56,7 @@ export const EventList = () => {
             )
             if (dailyweather.length > 0) {
               setWeather(dailyweather[0])
+              setDailyWeather(true)
             } else setWeather(weather[0])
             
           }
@@ -95,14 +98,12 @@ export const EventList = () => {
         deleteEvent(id)
         .then(() => getEvents())
     }
-
+ 
     useEffect(() => {
         getEvents();
     }, [])
 
-    useEffect(() => {
-      getDailyWeather();
-    }, [weather])
+    
 
     return (
         <>
@@ -112,6 +113,7 @@ export const EventList = () => {
                         onClick={() => {history.push('/events/create')}}>New Event
                         </button>
             </section>
+            {weather?.dt > 0 ? <WeatherCard daily={weather} dailyWeather={dailyWeather}/> : ""}
             <div className="event-cards">
                 {events.map( (event, index) => <EventCard event={event}
                                                 key={event.id}

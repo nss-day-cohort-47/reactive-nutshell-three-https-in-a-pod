@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-export const WeatherCard = ({daily}) => {
+export const WeatherCard = ({daily, dailyWeather}) => {
     const timeconverter = (time) => {
         var myDate = new Date(time *1000)
         let shortend = myDate.toLocaleDateString()
@@ -15,9 +15,11 @@ export const WeatherCard = ({daily}) => {
     }
     return (
         <div className="dailyweather">
-        <h3> {timeconverter(daily.dt)} </h3>
-        <p> High: {tempConvert(daily.temp.max)}\u00b0  Low: {tempConvert(daily.temp.min)}\u00b0</p>
-        <p> Conditions: {daily.weather[0].description} </p>
-    </div>
+            <h2>Weather Report</h2>
+            {dailyWeather ? <p>Projected weather for your event is:</p> : <p>Sadly we are only human and cannot predict the weather for your date, today's weather is</p>}
+            <h3> {timeconverter(daily?.dt)} </h3>
+            <p> High: {tempConvert(daily?.temp.max)}&deg;  Low: {tempConvert(daily?.temp.min)}&deg;</p>
+            <p> Conditions: {daily?.weather[0].description} </p>
+        </div>
     )
 }
