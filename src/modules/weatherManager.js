@@ -2,8 +2,8 @@
 
 let weatherCollection = [];
 
-export const getWeather = (city ,api) => {
-    return fetch(`api.openweathermap.org/data/2.5/forecast/daily?q=${city}&exclude=current,minutely,hourly,alerts&appid=${api}`)
+export const getWeather = (lat, lon ,api) => {
+    return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&appid=${api}`)
     .then( response => response.json())
     .then( parsedResponse => {
         weatherCollection = parsedResponse.daily
@@ -17,7 +17,7 @@ export const getCoordinates = (city) => {
     .then( parsedResponse => {
         let coordinates = {"lat": 0, "lon": 0}
         coordinates.lat = parsedResponse.results[0].locations[0].latLng.lat;
-        coordinates.lon = parsedResponse.results[0].locations[0].latLng.lon;
+        coordinates.lon = parsedResponse.results[0].locations[0].latLng.lng;
         return coordinates;
     })
 }
