@@ -23,3 +23,18 @@ export const deleteArticle = (articleId) => {
     })
     .then(response => response.json())
 }
+
+export const getArticleById = (id) => {
+    return fetch(`${url}/articles/${id}`)
+    .then(response => response.json())
+}
+
+export const updateArticle = (obj) => {
+    return fetch(`${url}/articles/${obj.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(obj)
+    }).then(response => response.json())
+}
