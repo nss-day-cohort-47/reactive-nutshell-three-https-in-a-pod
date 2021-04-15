@@ -47,31 +47,32 @@ export const TaskEditForm = () => {
     return (
         <form>
             <fieldset>
-                <div className="taskTitle">
+                <h2>Edit Task</h2>
+                <div className="formGroup">
                     <label htmlFor="taskTitle">Title: </label>
                     <input type="text"
                            id="title"
                            onChange={handleInputChange}
                            autoFocus required
-                           className="taskForm"
+                           className="form-control"
                            value={task.title} />
                 </div>
-                <div className="task">
+                <div className="formGroup">
                     <label htmlFor="task">Task Description: </label>
                     <input type="text"
                            id="task"
                            onChange={handleInputChange}
                            autoFocus required
-                           className="taskForm"
+                           className="form-control"
                            value={task.task} />
                 </div>
-                <div className="completedby">
+                <div className="formGroup">
                     <label htmlFor="completedby">Completion Date: </label>
                     <input type="date"
                            id="completedby"
                            required
                            onChange={handleInputChange}
-                           className="taskForm" 
+                           className="form-control" 
                            value={task.completedby} />
                 </div>
             </fieldset>

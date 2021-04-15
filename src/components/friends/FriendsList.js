@@ -4,6 +4,7 @@ import { getUserFriends, addFriend, deleteFriend } from "../../modules/friendsLi
 import { getAllUsers } from "../../modules/userManager";
 import { FriendCard } from "./FriendCard"
 import { SearchCard } from "./SearchCard"
+import "./Friends.css"
 
 export const FriendsList = () => {
     const [friends, setFriends] = useState([]);

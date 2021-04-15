@@ -5,9 +5,14 @@ import { EventCard } from './EventCard'
 import { getEventsById, deleteEvent } from '../../modules/eventsManager'
 import { useHistory } from 'react-router-dom'
 import { getUserFriends } from '../../modules/friendsListManager'
+import { getCoordinates, getWeather } from '../../modules/weatherManager'
+import { WeatherCard } from './weather/WeatherCard'
 
 export const EventList = () => {
     const [events, setEvents] = useState([])
+    const [weather, setWeather] = useState({})
+    const [dailyWeather, setDailyWeather] = useState(false)
+
     const history = useHistory()
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
@@ -33,12 +38,43 @@ export const EventList = () => {
           );
         };
     }
+
+  
+    
+    const api = "48a431e8f8f50c0b8cac2504f6e7d4d4"
+    const getDailyWeather = (eventObj) => {
+      return getCoordinates(eventObj.location)
+      .then(coords => {
+        getWeather(coords.lat, coords.lon , api).then(
+          weather => {
+            let dailyweather = {}
+            dailyweather = weather.filter(daily => {
+              if (daily.dt <= timeconverter(eventObj.eventdate) && timeconverter(eventObj.eventdate) <= daily.dt + 86400) {
+                return true
+              }else return false 
+            }
+            )
+            if (dailyweather.length > 0) {
+              setWeather(dailyweather[0])
+              setDailyWeather(true)
+            } else {
+              setWeather(weather[0])
+              setDailyWeather(false)
+            }
+          }
+        )
+      })
+    }
+    
+    
+    //Convert epoch to ISO
     const timeconverter = (time) => {
-      console.log(time)
       let myDate = new Date(time)
-      let shortend = myDate.toISOString()
+      let shortend = myDate.getTime()/1000
       return shortend;
     }
+
+    //Query for events of friends and currentuser
     let friendEvents = []
     const getEvents = () => {
         return getUserFriends(loggedInUser).then(friends => {
@@ -46,42 +82,51 @@ export const EventList = () => {
             getEventsById(friend.user.id).then(
               events => {
                 friendEvents = friendEvents.concat(events)
-                console.log(friendEvents)})
+                })
             .then(() => getEventsById(loggedInUser)
             .then(events => { 
               let allEvents = []
+              let futureEvents = []
               allEvents = friendEvents.concat(events)
               const sortedEvents = allEvents.sort(compareValues('eventdate', 'asc'))
-              sortedEvents.filter(event => event.eventdate < timeconverter(Date.now()))
-              setEvents(sortedEvents)
+              futureEvents = sortedEvents.filter(event => timeconverter(event.eventdate)  > Date.now()/1000)
+              setEvents(futureEvents)
             })
             )
           })
         })
     }
+
     const deleteSetEvent = (id) => {
         deleteEvent(id)
         .then(() => getEvents())
     }
-
+ 
     useEffect(() => {
         getEvents();
     }, [])
+
+    
+
     return (
         <>
+        <section className="event-style">
             <section className="event-content">
                 <button type="button" 
                         className="btn"
                         onClick={() => {history.push('/events/create')}}>New Event
                         </button>
             </section>
+            {weather?.dt > 0 ? <WeatherCard daily={weather} dailyWeather={dailyWeather}/> : ""}
             <div className="event-cards">
                 {events.map( (event, index) => <EventCard event={event}
                                                 key={event.id}
                                                 index={index}
                                                 loggedInUser={loggedInUser}
-                                                deleteSetEvent={deleteSetEvent} />)} 
+                                                deleteSetEvent={deleteSetEvent}
+                                                getDailyWeather={getDailyWeather} />)} 
             </div>
+        </section>
         </>
     )
 } 

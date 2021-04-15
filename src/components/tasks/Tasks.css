@@ -1,0 +1,24 @@
+/* Hunter-- Styling for task cards */
+
+.taskCard {
+    margin: 2em;
+    border: 1px solid cornsilk;
+    background-color:  #afa37c;
+    color: black
+}
+
+body {
+    background-color:  #213555;
+}
+
+.header {
+    color: whitesmoke;
+    text-align: center;
+}
+h2 {
+    color: whitesmoke;
+}
+
+.formGroup {
+    color: whitesmoke;
+}

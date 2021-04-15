@@ -1,0 +1,21 @@
+/* Hunter- styling for friends cards */
+.friendName {
+    margin: 2em;
+    border: 1px solid black;
+    width: 500px;
+}
+
+.searchBox {
+    color: whitesmoke;
+}
+
+body {
+    background-color:  #213555;
+}
+
+.friendName {
+    margin: 2em;
+    border: 1px solid cornsilk;
+    background-color:  #afa37c;
+    color: black
+}

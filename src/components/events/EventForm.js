@@ -49,37 +49,37 @@ export const EventEntry = () => {
                             onChange={handleInputChange} 
                             autoFocus 
                             required
-                            className="eventform"
+                            className="form-control"
                             placeholder="Title"
                             value={events.title} />
                 </div>
-                <div>   
+                <div className="eventform-group">   
                     <label htmlFor="message">Event Description</label>
                     <input  type="text" 
                             id="message" 
                             required
                             onChange={handleInputChange} 
-                            className="eventform"
+                            className="form-control"
                             placeholder="message"
                             value={events.message} />
                 </div>
-                <div>  
+                <div className="eventform-group">  
                     <label htmlFor="locations">Event Location</label>
                     <input  type="text" 
                             id="location" 
                             required
                             onChange={handleInputChange} 
-                            className="eventform"
+                            className="form-control"
                             placeholder="location"
                             value={events.location} />
                 </div>
-                <div>  
+                <div className="eventform-group">  
                     <label htmlFor="eventdate">Event Date</label>
                     <input  type="datetime-local" 
                             id="eventdate" 
                             required
                             onChange={handleInputChange} 
-                            className="eventform"
+                            className="form-control"
                             value={events.eventdate} />
                 </div>
                 {/* <div> 

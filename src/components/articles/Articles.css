@@ -1,0 +1,39 @@
+/* Hunter-- Styling for article cards */
+.friend-article-card{
+    font-style: italic;
+    margin: 2em;
+    border: 1px solid #afa37c;
+    background-color: cornsilk;
+}
+
+.article-card {
+    margin: 2em;
+    border: 1px solid cornsilk;
+    background-color:  #afa37c;
+    color: black
+}
+
+.btn {
+    background-color: #BC4123;
+    color: whitesmoke;
+}
+
+body {
+    background-color:  #213555;
+}
+
+.articleFormTitle {
+color: whitesmoke;
+}
+
+.form-group {
+    color: whitesmoke;
+}
+
+.editForm-group {
+    color: whitesmoke;
+}
+
+.editFormTitle {
+    color: whitesmoke;
+}
