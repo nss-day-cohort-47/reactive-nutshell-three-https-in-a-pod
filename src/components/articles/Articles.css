@@ -12,3 +12,28 @@
     background-color:  #afa37c;
     color: black
 }
+
+.btn {
+    background-color: #BC4123;
+    color: whitesmoke;
+}
+
+body {
+    background-color:  #213555;
+}
+
+.articleFormTitle {
+color: whitesmoke;
+}
+
+.form-group {
+    color: whitesmoke;
+}
+
+.editForm-group {
+    color: whitesmoke;
+}
+
+.editFormTitle {
+    color: whitesmoke;
+}

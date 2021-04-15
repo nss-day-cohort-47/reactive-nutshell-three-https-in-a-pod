@@ -14,8 +14,8 @@ export const EventCard = ({event, deleteSetEvent, loggedInUser, index}) => {
             <p className="user-event-eventdate">Date: {event.eventdate} at {event.eventtime} </p>
             <p className="user-event-location">Location: {event.location}</p>
             <p className="user-event-posted">Posted by: {event.user.name} </p>
-                <Link to={`/events/${event.id}/edit`}><button >Edit</button></Link>
-                <button type="button" onClick={() => deleteSetEvent(event.id)}>Delete</button> 
+                <Link to={`/events/${event.id}/edit`}><button className="btn">Edit</button></Link>
+                <button type="button" className="btn"onClick={() => deleteSetEvent(event.id)}>Delete</button> 
             {index === 0 ? <><hr /><hr /></>: ""}
         </article>
         </> : <>

@@ -7,6 +7,17 @@
 
 .user-event-card {
     margin: 2em;
-    border: 1px solid black;
+    border: 1px solid cornsilk;
+    background-color:  #afa37c;
+    color: black
+}
+
+body {
+    background-color:  #213555;
+}
+
+.btn {
+    background-color: #BC4123;
+    color: whitesmoke;
 }
 

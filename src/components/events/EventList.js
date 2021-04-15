@@ -69,6 +69,7 @@ export const EventList = () => {
     }, [])
     return (
         <>
+        <section className="event-style">
             <section className="event-content">
                 <button type="button" 
                         className="btn"
@@ -82,6 +83,7 @@ export const EventList = () => {
                                                 loggedInUser={loggedInUser}
                                                 deleteSetEvent={deleteSetEvent} />)} 
             </div>
+        </section>
         </>
     )
 } 
