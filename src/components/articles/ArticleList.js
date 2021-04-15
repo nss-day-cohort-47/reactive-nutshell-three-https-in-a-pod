@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import { deleteArticle, getUserArticles } from "../../modules/articleManager";
 import { getUserFriends } from "../../modules/friendsListManager";
 import { ArticleCard } from "./ArticleCards"
+import "./ArticleList.css"
 
 
 export const ArticleList = () => {

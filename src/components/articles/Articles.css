@@ -2,11 +2,13 @@
 .friend-article-card{
     font-style: italic;
     margin: 2em;
-    border: 1px solid black;
+    border: 1px solid #afa37c;
     background-color: cornsilk;
 }
 
 .article-card {
     margin: 2em;
-    border: 1px solid black;
+    border: 1px solid cornsilk;
+    background-color:  #afa37c;
+    color: black
 }
