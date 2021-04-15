@@ -57,8 +57,10 @@ export const EventList = () => {
             if (dailyweather.length > 0) {
               setWeather(dailyweather[0])
               setDailyWeather(true)
-            } else setWeather(weather[0])
-            
+            } else {
+              setWeather(weather[0])
+              setDailyWeather(false)
+            }
           }
         )
       })
