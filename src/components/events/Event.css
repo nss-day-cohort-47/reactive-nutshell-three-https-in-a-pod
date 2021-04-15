@@ -10,3 +10,16 @@
     border: 1px solid black;
 }
 
+.nextevent {
+    margin: 2em;
+    font-weight: bold;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+}
+
+.dailyweather {
+    text-align: center;
+    position: top;
+    margin: 2em;
+    border: 1px solid black;
+}
