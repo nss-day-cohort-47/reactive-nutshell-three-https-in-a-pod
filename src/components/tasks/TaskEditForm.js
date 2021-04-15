@@ -1,3 +1,5 @@
+// Ethan Mathis -- purpose is to create a form to edit a tasks name, description or completion date
+
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { getTaskById, updateTask } from "../../modules/TaskManager"

@@ -1,3 +1,5 @@
+// Ethan Mathis -- purpose is to create a single TaskCard with 'edit' and 'delete' buttons and functionality
+
 import React from "react"
 import { Link } from 'react-router-dom'
 
@@ -16,7 +18,7 @@ export const TaskCard = ({task, handleDelete, handleUpdate}) => {
                                                    
                                                    onChange={() => handleUpdate(task)} /></label>
         <Link to={`/tasks/${task.id}/edit`}><button>Edit</button></Link>
-        <button type="button" className="btn btn-delete" onClick={() => handleDelete(task.id)}>Remove</button>
+        <button type="button" className="btn btn-primary" onClick={() => handleDelete(task.id)}>Remove</button>
     </section>
     )
 
