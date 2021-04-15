@@ -5,9 +5,9 @@ import React from "react"
 export const MessageCard = ({message, handleDelete}) => {
     return (
         <section className="messageCard">
-            <div className="userName">From: {message.user.name}</div>
-            <div className="message">{message.message}</div>
+            <div className="message">{message.user.name}: {message.message}
             <button type="button" className="btn btn-primary" onClick={() => handleDelete(message.id)}>Delete</button>
+            </div>
         </section>
     )
 }

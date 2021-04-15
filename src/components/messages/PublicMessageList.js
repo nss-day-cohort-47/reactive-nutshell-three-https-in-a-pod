@@ -3,23 +3,26 @@
 import React, { useEffect, useState } from 'react'
 import { getAllMessages, deleteMessage } from "../../modules/MessageManager"
 import { MessageCard } from './MessageCard'
+import { NewMessageInput } from './NewMessage'
 
 export const MessageList = () => {
 
     const [messages, setMessages] = useState([])
 
-    const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
-
 
     const getMessages = () => {
         return getAllMessages()
-        .then(allMessages => setMessages(allMessages))
+        .then(allMessages => {
+            setMessages(allMessages)
+        })
     }
+
 
     const handleDelete = (id) => {
         return deleteMessage(id)
         .then(() => getMessages())
     }
+
 
     useEffect(() => {
         getMessages()
@@ -34,6 +37,10 @@ export const MessageList = () => {
                message={message}
                handleDelete={handleDelete}
                 /> )}
+
+            <NewMessageInput />
+                              
+            
         </section>
     )
 }
