@@ -1,0 +1,10 @@
+/* Hunter- styling for friends cards */
+.friendName {
+    margin: 2em;
+    border: 1px solid black;
+    width: 500px;
+}
+
+.searchBox {
+    color: blueviolet;
+}
