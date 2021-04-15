@@ -1,0 +1,12 @@
+/* Hunter-- Styling for article cards */
+.friend-article-card{
+    font-style: italic;
+    margin: 2em;
+    border: 1px solid black;
+    background-color: cornsilk;
+}
+
+.article-card {
+    margin: 2em;
+    border: 1px solid black;
+}
