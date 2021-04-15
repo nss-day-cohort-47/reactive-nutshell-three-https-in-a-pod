@@ -15,9 +15,9 @@ export const EventCard = ({event, deleteSetEvent, loggedInUser, index, getDailyW
                 <p className="event-eventdate">Date: {event.eventdate} at {event.eventtime} </p>
                 <p className="event-location">Location: {event.location}</p>
                 <p className="event-posted">Posted by: {event.user.name} </p>
-                <button type="button" onClick={() => getDailyWeather(event)}>Get Weather</button>
-                {loggedInUser === event.userId ? <><Link to={`/events/${event.id}/edit`}><button >Edit</button></Link>
-                <button type="button" onClick={() => deleteSetEvent(event.id)}>Delete</button> </> : ""}
+                <button type="button" className="btn" onClick={() => getDailyWeather(event)}>Get Weather</button>
+                {loggedInUser === event.userId ? <><Link to={`/events/${event.id}/edit`}><button className="btn">Edit</button></Link>
+                <button type="button" className="btn" onClick={() => deleteSetEvent(event.id)}>Delete</button> </> : ""}
             </article>
             <hr /><hr />
         </>
@@ -32,16 +32,9 @@ export const EventCard = ({event, deleteSetEvent, loggedInUser, index, getDailyW
             <p className="user-event-eventdate">Date: {event.eventdate} at {event.eventtime} </p>
             <p className="user-event-location">Location: {event.location}</p>
             <p className="user-event-posted">Posted by: {event.user.name} </p>
-<<<<<<< HEAD
                 <Link to={`/events/${event.id}/edit`}><button className="btn">Edit</button></Link>
                 <button type="button" className="btn"onClick={() => deleteSetEvent(event.id)}>Delete</button> 
             {index === 0 ? <><hr /><hr /></>: ""}
-=======
-                <button type="button" onClick={() => getDailyWeather(event)}>Get Weather</button>
-                <Link to={`/events/${event.id}/edit`}><button >Edit</button></Link>
-                <button type="button" onClick={() => deleteSetEvent(event.id)}>Delete</button> 
-            
->>>>>>> main
         </article>
         </> : <>
         <article className="event-card">

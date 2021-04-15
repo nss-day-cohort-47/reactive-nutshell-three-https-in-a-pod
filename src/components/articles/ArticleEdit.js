@@ -54,7 +54,7 @@ export const ArticleEdit = () => {
                            id="title"
                            onChange={handleControlledInputChange}
                            autoFocus required
-                           className="articleForm"
+                           className="form-control"
                            value={article.title} />
                 </div>
                 <div className="editForm-group">
@@ -63,7 +63,7 @@ export const ArticleEdit = () => {
                            id="synopsis"
                            onChange={handleControlledInputChange}
                            autoFocus required
-                           className="articleForm"
+                           className="form-control"
                            value={article.synopsis} />
                 </div>
                 <div className="editForm-group">
@@ -72,7 +72,7 @@ export const ArticleEdit = () => {
                            id="url"
                            required
                            onChange={handleControlledInputChange}
-                           className="articleForm" 
+                           className="form-control" 
                            value={article.url} />
                 </div>
             </fieldset>

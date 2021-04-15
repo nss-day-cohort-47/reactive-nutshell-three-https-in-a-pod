@@ -10,3 +10,15 @@
 body {
     background-color:  #213555;
 }
+
+.header {
+    color: whitesmoke;
+    text-align: center;
+}
+h2 {
+    color: whitesmoke;
+}
+
+.formGroup {
+    color: whitesmoke;
+}

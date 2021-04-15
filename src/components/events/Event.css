@@ -34,3 +34,15 @@ body {
     margin: 2em;
     border: 1px solid black;
 }
+
+.eventform-title {
+    color: whitesmoke;
+}
+
+.eventform-group {
+    color: whitesmoke;
+}
+
+.dailyweather {
+    color: whitesmoke;
+}

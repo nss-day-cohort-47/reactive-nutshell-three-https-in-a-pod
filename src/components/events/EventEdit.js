@@ -51,6 +51,7 @@ export const EventEditForm = () => {
         <>
             <form>
                 <fieldset>
+                    <h2>Edit Event</h2>
                 <div className="eventform-group">
                     <label htmlFor="title">Event Title</label>
                     <input  type="text" 
@@ -58,37 +59,37 @@ export const EventEditForm = () => {
                             onChange={handleFieldChange} 
                             autoFocus 
                             required
-                            className="eventform"
+                            className="form-control"
                             placeholder="Title"
                             value={event.title} />
                 </div>
-                <div>   
+                <div className="eventform-group">   
                     <label htmlFor="message">Event Description</label>
                     <input  type="text" 
                             id="message" 
                             required
                             onChange={handleFieldChange} 
-                            className="eventform"
+                            className="form-control"
                             placeholder="message"
                             value={event.message} />
                 </div>
-                <div>  
+                <div className="eventform-group">  
                     <label htmlFor="locations">Event Location</label>
                     <input  type="text" 
                             id="location" 
                             required
                             onChange={handleFieldChange} 
-                            className="eventform"
+                            className="form-control"
                             placeholder="location"
                             value={event.location} />
                 </div>
-                <div>  
+                <div className="eventform-group">  
                     <label htmlFor="eventdate">Event Date</label>
                     <input  type="datetime-local" 
                             id="eventdate" 
                             required
                             onChange={handleFieldChange} 
-                            className="eventform"
+                            className="form-control"
                             value={event.eventdate} />
                 </div>
                 {/* <div> 
@@ -100,7 +101,7 @@ export const EventEditForm = () => {
                             className="eventform"
                             value={event.eventtime} />                 
                 </div> */}
-                <div className="btn">
+                <div>
                     <button
                         type="button" disabled={isLoading}
                         onClick={updateExistingEvent}
