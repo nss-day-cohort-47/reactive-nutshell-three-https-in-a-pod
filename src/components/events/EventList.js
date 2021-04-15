@@ -33,12 +33,17 @@ export const EventList = () => {
           );
         };
     }
+
+  
+    //Convert epoch to ISO
     const timeconverter = (time) => {
       console.log(time)
       let myDate = new Date(time)
       let shortend = myDate.toISOString()
       return shortend;
     }
+
+    //Query for events of friends and currentuser
     let friendEvents = []
     const getEvents = () => {
         return getUserFriends(loggedInUser).then(friends => {
@@ -59,6 +64,7 @@ export const EventList = () => {
           })
         })
     }
+
     const deleteSetEvent = (id) => {
         deleteEvent(id)
         .then(() => getEvents())
@@ -67,6 +73,7 @@ export const EventList = () => {
     useEffect(() => {
         getEvents();
     }, [])
+
     return (
         <>
             <section className="event-content">
