@@ -53,8 +53,8 @@ export const EventList = () => {
             }
             )
             if (dailyweather.length > 0) {
-              window.alert(dailyweather[0].feels_like.day)
-            } else window.alert("There is no data for that day, the current weather is:" + weather[0].feels_like.day)
+              setWeather(dailyweather[0])
+            } else setWeather(weather[0])
             
           }
         )
@@ -100,9 +100,9 @@ export const EventList = () => {
         getEvents();
     }, [])
 
-    // useEffect(() => {
-    //   getDailyWeather();
-    // }, [weather])
+    useEffect(() => {
+      getDailyWeather();
+    }, [weather])
 
     return (
         <>
