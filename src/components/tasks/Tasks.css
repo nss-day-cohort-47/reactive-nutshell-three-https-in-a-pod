@@ -1,0 +1,6 @@
+/* Hunter-- Styling for task cards */
+
+.taskCard {
+    margin: 2em;
+    border: 1px solid black;
+}
