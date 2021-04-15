@@ -41,23 +41,21 @@ export const EventList = () => {
     
     const api = "48a431e8f8f50c0b8cac2504f6e7d4d4"
     const getDailyWeather = (eventObj) => {
-      console.log(eventObj)
       return getCoordinates(eventObj.location)
       .then(coords => {
-        console.log(coords)
         getWeather(coords.lat, coords.lon , api).then(
           weather => {
-            console.log(weather)
-            weather.filter(daily => {
-              if(daily.dt <= timeconverter(eventObj.date) <= daily.dt + 86400) {
-                console.log(timeconverter(parseInt(eventObj.date) ))
-                console.log(daily.dt)
+            let dailyweather = {}
+            dailyweather = weather.filter(daily => {
+              if (daily.dt <= timeconverter(eventObj.eventdate) && timeconverter(eventObj.eventdate) <= daily.dt + 86400) {
                 return true
-              }
-              
+              }else return false 
             }
             )
-            window.alert(weather.day)
+            if (dailyweather.length > 0) {
+              window.alert(dailyweather[0].feels_like.day)
+            } else window.alert("There is no data for that day, the current weather is:" + weather[0].feels_like.day)
+            
           }
         )
       })
@@ -67,7 +65,7 @@ export const EventList = () => {
     //Convert epoch to ISO
     const timeconverter = (time) => {
       let myDate = new Date(time)
-      let shortend = myDate.getTime()
+      let shortend = myDate.getTime()/1000
       return shortend;
     }
 
