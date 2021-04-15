@@ -26,9 +26,8 @@ export const TaskList = () => {
 
     // handler for deleting unwanted tasks
     const handleDelete = (id) => {
-        deleteTask(id).then(() => 
-        getLoggedTasks()
-        )
+        deleteTask(id)
+        .then(() => getLoggedTasks())
     }
 
     // this is for the checkbox. when the checkbox is clicked, it makes a copy of that task and sets isComplete = true.
