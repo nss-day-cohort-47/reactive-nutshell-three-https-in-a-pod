@@ -86,10 +86,11 @@ export const EventList = () => {
             .then(() => getEventsById(loggedInUser)
             .then(events => { 
               let allEvents = []
+              let futureEvents = []
               allEvents = friendEvents.concat(events)
               const sortedEvents = allEvents.sort(compareValues('eventdate', 'asc'))
-              // sortedEvents.filter(event => event.eventdate < timeconverter(Date.now()))
-              setEvents(sortedEvents)
+              futureEvents = sortedEvents.filter(event => timeconverter(event.eventdate)  > Date.now()/1000)
+              setEvents(futureEvents)
             })
             )
           })
