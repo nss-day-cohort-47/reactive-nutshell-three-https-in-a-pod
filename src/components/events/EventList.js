@@ -5,9 +5,12 @@ import { EventCard } from './EventCard'
 import { getEventsById, deleteEvent } from '../../modules/eventsManager'
 import { useHistory } from 'react-router-dom'
 import { getUserFriends } from '../../modules/friendsListManager'
+import { getWeather } from '../../modules/weatherManager'
 
 export const EventList = () => {
     const [events, setEvents] = useState([])
+    const [weather, setWeather] = useState({})
+
     const history = useHistory()
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
@@ -35,9 +38,17 @@ export const EventList = () => {
     }
 
   
-    //Convert epoch to ISO
+    
+    const api = "48a431e8f8f50c0b8cac2504f6e7d4d4"
+    const getDailyWeather = (eventObj) => {
+      console.log(eventObj)
+      return getWeather(eventObj.location, api).then(
+        weather => setWeather(weather)
+      )
+    }
+  //Convert epoch to ISO
+    console.log(weather)
     const timeconverter = (time) => {
-      console.log(time)
       let myDate = new Date(time)
       let shortend = myDate.toISOString()
       return shortend;
@@ -51,7 +62,7 @@ export const EventList = () => {
             getEventsById(friend.user.id).then(
               events => {
                 friendEvents = friendEvents.concat(events)
-                console.log(friendEvents)})
+                })
             .then(() => getEventsById(loggedInUser)
             .then(events => { 
               let allEvents = []
@@ -74,6 +85,9 @@ export const EventList = () => {
         getEvents();
     }, [])
 
+    useEffect(() => {
+      getWeather();
+    }, [])
     return (
         <>
             <section className="event-content">
@@ -87,7 +101,8 @@ export const EventList = () => {
                                                 key={event.id}
                                                 index={index}
                                                 loggedInUser={loggedInUser}
-                                                deleteSetEvent={deleteSetEvent} />)} 
+                                                deleteSetEvent={deleteSetEvent}
+                                                getDailyWeather={getDailyWeather} />)} 
             </div>
         </>
     )
