@@ -9,6 +9,7 @@ import { EventEntry } from "./events/EventForm"
 import { EventEditForm } from "./events/EventEdit"
 import { TaskForm } from "./tasks/TaskForm"
 import { TaskEditForm } from "./tasks/TaskEditForm"
+import { ArticleEdit } from "./articles/ArticleEdit"
 
 
 export const ApplicationViews = () => {
@@ -20,6 +21,9 @@ export const ApplicationViews = () => {
       </Route>
       <Route exact path="/articles/create">
         <ArticleForm />
+      </Route>
+      <Route path="/articles/:articleId(\d+)/edit">
+        <ArticleEdit />
       </Route>
       <Route path="/friends">
         <FriendsList />
