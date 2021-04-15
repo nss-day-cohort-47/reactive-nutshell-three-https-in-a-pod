@@ -16,8 +16,8 @@ export const ArticleCard = ({article, handleDeleteArticle, loggedInUser}) => {
             <h6>{article.title}</h6>
             <p>{article.synopsis}</p>
             <a href={article.url}>{article.url}</a>
-            <Link to={`/articles/${article.id}/edit`}><button>Edit</button></Link>
-            <button type="button" onClick={() => handleDeleteArticle(article.id)}>Delete</button>
+            <Link to={`/articles/${article.id}/edit`}><button className="btn">Edit</button></Link>
+            <button type="button" className="btn" onClick={() => handleDeleteArticle(article.id)}>Delete</button>
         </article>
         </article>
         </> : <>

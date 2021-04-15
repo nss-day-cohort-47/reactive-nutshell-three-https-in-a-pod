@@ -22,64 +22,65 @@ export const TaskForm = () => {
     const history = useHistory()
 
     const handleInputChange = (event) => {
-        const newTask = {...task}
-        let selectedVal = event.target.value 
+        const newTask = { ...task }
+        let selectedVal = event.target.value
         newTask[event.target.id] = selectedVal
         setTask(newTask)
         // console.log(task)
     }
 
-   const handleSaveTask = (event) => {
+    const handleSaveTask = (event) => {
         event.preventDefault()
         setIsLoading(true)
         console.log(task)
         addTask(task)
-        .then(() => history.push("/tasks"))
-   }
+            .then(() => history.push("/tasks"))
+    }
 
-   return (
-       <form>
-           <h2>New Task</h2>
-           <fieldset>
-               <div className="formTitle">
-                   <label htmlFor="title">Title:</label>
-                   <input type="text"
-                          id="title"
-                          className="title" 
-                          required
-                          autoFocus 
-                          placeholder="Name Your Task"
-                          value={task.title}
-                          onChange={handleInputChange}  />
-               </div>
-           </fieldset>
-           <fieldset>
-               <div className="formTask">
-                   <label htmlFor="task">Task Description:</label>
-                   <input type="text" 
-                          id="task"
-                          className="task"
-                          required
-                          autoFocus 
-                          placeholder="Task Details"
-                          value={task.task}
-                          onChange={handleInputChange}  />
-               </div>
-           </fieldset>
-           <fieldset>
-               <div className="formCompleteDate">
-                   <label htmlFor="completedby">To Be Completed By:</label>
-                   <input type="date"
-                          id="completedby"
-                          value={task.completedby}
-                          onChange={handleInputChange}  />
-               </div>
-           </fieldset>
-           <button className="btn btn-primary"
-                   onClick={handleSaveTask}
-                   disabled={isLoading}>
-                       Save Task
+    return (
+        <form>
+            <h2>New Task</h2>
+            <fieldset>
+                <div className="formGroup">
+                    <label htmlFor="title">Title:</label>
+                    <input type="text"
+                        id="title"
+                        className="form-control"
+                        required
+                        autoFocus
+                        placeholder="Name Your Task"
+                        value={task.title}
+                        onChange={handleInputChange} />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="formGroup">
+                    <label htmlFor="task">Task Description:</label>
+                    <input type="text"
+                        id="task"
+                        className="form-control"
+                        required
+                        autoFocus
+                        placeholder="Task Details"
+                        value={task.task}
+                        onChange={handleInputChange} />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="formGroup">
+                    <label htmlFor="completedby">To Be Completed By:</label>
+                    <input type="date"
+                        className="form-control"
+                        id="completedby"
+                        value={task.completedby}
+                        onChange={handleInputChange} />
+                </div>
+            </fieldset>
+            <button className="btn btn-primary"
+                onClick={handleSaveTask}
+                disabled={isLoading}>
+                Save Task
                    </button>
-       </form>
-   )
+        </form>
+    )
 }

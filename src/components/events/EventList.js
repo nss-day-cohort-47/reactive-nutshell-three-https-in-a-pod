@@ -110,6 +110,7 @@ export const EventList = () => {
 
     return (
         <>
+        <section className="event-style">
             <section className="event-content">
                 <button type="button" 
                         className="btn"
@@ -125,6 +126,7 @@ export const EventList = () => {
                                                 deleteSetEvent={deleteSetEvent}
                                                 getDailyWeather={getDailyWeather} />)} 
             </div>
+        </section>
         </>
     )
 } 

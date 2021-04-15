@@ -47,31 +47,32 @@ export const ArticleEdit = () => {
     return (
         <form>
             <fieldset>
-                <div className="articleTitle">
+                <h2 className="editFormTitle">Edit Article</h2>
+                <div className="editForm-group">
                     <label htmlFor="articleTitle">Title: </label>
                     <input type="text"
                            id="title"
                            onChange={handleControlledInputChange}
                            autoFocus required
-                           className="articleForm"
+                           className="form-control"
                            value={article.title} />
                 </div>
-                <div className="article">
+                <div className="editForm-group">
                     <label htmlFor="synopsis">Synopsis: </label>
                     <input type="text"
                            id="synopsis"
                            onChange={handleControlledInputChange}
                            autoFocus required
-                           className="articleForm"
+                           className="form-control"
                            value={article.synopsis} />
                 </div>
-                <div className="url">
+                <div className="editForm-group">
                     <label htmlFor="url">URL: </label>
                     <input type="text"
                            id="url"
                            required
                            onChange={handleControlledInputChange}
-                           className="articleForm" 
+                           className="form-control" 
                            value={article.url} />
                 </div>
             </fieldset>
