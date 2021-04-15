@@ -71,6 +71,7 @@ export const ArticleList = () => {
                         key={article.id}
                         article={article}
                         handleDeleteArticle={handleDeleteArticle}
+                        loggedInUser={loggedInUser}
                     />
                 )}
             </div>
