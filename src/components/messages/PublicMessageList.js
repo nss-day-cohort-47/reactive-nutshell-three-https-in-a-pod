@@ -38,7 +38,7 @@ export const MessageList = () => {
                handleDelete={handleDelete}
                 /> )}
 
-            <NewMessageInput />
+            <NewMessageInput getMessages={getMessages} />
                               
             
         </section>

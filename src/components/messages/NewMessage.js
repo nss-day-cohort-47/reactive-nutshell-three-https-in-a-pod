@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { addMessage } from '../../modules/MessageManager';
 
-export const NewMessageInput = () => {
+export const NewMessageInput = ({getMessages}) => {
     
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
@@ -24,6 +24,15 @@ export const NewMessageInput = () => {
         event.preventDefault()
         setIsLoading(true)
         addMessage(newMessage)
+        .then(() => {
+            getMessages()
+            setIsLoading(false)
+            setNewMessage({
+                userId: loggedInUser,
+                message: ""
+            })
+        })
+
     }
 
 
