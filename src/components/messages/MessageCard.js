@@ -10,25 +10,23 @@ export const MessageCard = ({message, handleDelete}) => {
     return (
         <section className="messageCard">
             <div className="message">{message.user.name}: {message.message}
-<<<<<<< HEAD
-            <button type="button" className="message-btn" onClick={() => handleDelete(message.id)}>Delete</button>
-            </div>
-=======
             
             {message.userId === loggedInUser ? 
             <>
+            <div className="message-btns">
                 <Link to={`/messages/${message.id}/edit`}>
-                <button type="button" >Edit</button>
+                <button type="button" className="message-btn">Edit</button>
                 </Link>
                 <button type="button" 
-                        className="article-btn" 
+                        className="message-btn" 
                         onClick={() => handleDelete(message.id)}>
                             Delete
                 </button>
+
+            </div>
             </>
             : null
         }</div>
->>>>>>> main
         </section>
     )
 }
