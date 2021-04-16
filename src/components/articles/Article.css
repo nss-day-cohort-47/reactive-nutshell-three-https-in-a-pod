@@ -37,4 +37,58 @@ color: whitesmoke;
 
 .message {
     color: whitesmoke;
+    /* width: 900px; */
+}
+
+.messageList {
+    border: 5px solid #afa37c;
+    position: absolute;
+    top: 50px; /* Header Height */
+    bottom: 50px; /* Footer Height */
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+    background-color: #afa37c;
+}
+
+.messageHeader {
+    text-align: center;
+    color: black;
+    text-emphasis: bold;
+}
+
+.messageCard {
+    margin-bottom: 10px;
+    border: 1px solid black;
+    padding: 2px;
+    background-color: #213555;
+}
+
+.messageBottom {
+    bottom:0px;
+  max-height:800px;
+  overflow:auto;
+  position:absolute;
+  width:100%;
+}
+
+.newMessageInput {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+}
+
+.newMessage {
+    width: 900px;
+    height: 50px;
+}
+.message-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: end;
+}
+
+.message-btn {
+    background-color: #BC4123;
+    color: whitesmoke; 
 }

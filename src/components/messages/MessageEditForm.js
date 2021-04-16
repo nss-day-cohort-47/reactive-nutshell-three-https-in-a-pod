@@ -42,7 +42,7 @@ export const EditMessageCard = () => {
         <div className="editForm">
             <input type="text"
                    id="message"
-                   className="editMessage"
+                   className="form-control"
                    value={editMessage.message}
                    onChange={handleInputChange} />
 
