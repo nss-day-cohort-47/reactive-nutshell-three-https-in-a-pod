@@ -36,7 +36,7 @@ color: whitesmoke;
 }
 
 .message {
-    color: black;
+    color: whitesmoke;
     /* width: 900px; */
 }
 
@@ -61,6 +61,7 @@ color: whitesmoke;
     margin-bottom: 15px;
     border: 1px solid black;
     padding: 2px;
+    background-color: #213555;
 }
 
 .messageBottom {
