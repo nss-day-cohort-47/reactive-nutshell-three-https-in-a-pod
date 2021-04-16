@@ -11,6 +11,7 @@ import { TaskForm } from "./tasks/TaskForm"
 import { TaskEditForm } from "./tasks/TaskEditForm"
 import { ArticleEdit } from "./articles/ArticleEdit"
 import { MessageList } from "./messages/PublicMessageList"
+import { EditMessageCard } from "./messages/MessageEditForm"
 
 
 export const ApplicationViews = () => {
@@ -29,8 +30,12 @@ export const ApplicationViews = () => {
       <Route path="/friends">
         <FriendsList />
       </Route>
-      <Route path="/messages">
+      <Route exact path="/messages">
         <MessageList /> 
+      </Route>
+
+      <Route path="/messages/:messageId(\d+)/edit">
+        <EditMessageCard />
       </Route>
 
       <Route exact path="/tasks">
