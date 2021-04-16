@@ -5,14 +5,20 @@ import { getAllMessages, deleteMessage } from "../../modules/MessageManager"
 import { MessageCard } from './MessageCard'
 import { NewMessageInput } from './NewMessage'
 import { addMessage } from '../../modules/MessageManager'
+import { getUserFriends } from '../../modules/friendsListManager'
 
 
 export const MessageList = () => {
-
+    
+    const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
     const [messages, setMessages] = useState([])
     const [storage, setStorage] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [newMessage, setNewMessage] = useState({
+        userId: loggedInUser,
+        message: ""
+    })  
     
-
     const getMessages = () => {
         return getAllMessages()
         .then(allMessages => {
@@ -21,22 +27,10 @@ export const MessageList = () => {
         })
     }
 
-
     const handleDelete = (id) => {
         return deleteMessage(id)
         .then(() => getMessages())
     }
-
-    // localStorage.setItem("new_message", false)
-
-    
-
-    const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
-    const [isLoading, setIsLoading] = useState(false)
-    const [newMessage, setNewMessage] = useState({
-        userId: loggedInUser,
-        message: ""
-    })
     const handleInputChange = (event) => {
         const newMessageCopy = {...newMessage}
         let selectedVal = event.target.value
@@ -56,6 +50,7 @@ export const MessageList = () => {
             })
         })
     }
+    getUserFriends(loggedInUser)
     
     const checkStorage = () => {
         if(localStorage.getItem("new_message") === "true") {
