@@ -56,7 +56,7 @@ export const ArticleForm = () => {
                     <label htmlFor="url">URL:</label>
                     <input type="text" id="url" onChange={handleControlledInputChange} required className="form-control" placeholder="URL" value={article.url} />
                 </div>
-                <button type="button" className="btn" onClick={handleSaveArticle} disabled={isLoading}>
+                <button type="button" className="article-btn" onClick={handleSaveArticle} disabled={isLoading}>
                 Save Article
                 </button>
             </fieldset>

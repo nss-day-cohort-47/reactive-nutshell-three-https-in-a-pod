@@ -113,7 +113,7 @@ export const EventList = () => {
         <section className="event-style">
             <section className="event-content">
                 <button type="button" 
-                        className="btn"
+                        className="article-btn"
                         onClick={() => {history.push('/events/create')}}>New Event
                         </button>
             </section>

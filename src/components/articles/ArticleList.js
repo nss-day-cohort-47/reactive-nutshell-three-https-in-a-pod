@@ -1,10 +1,10 @@
 //Hunter Preast-- Display list of articles
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router";
-import { deleteArticle, getUserArticles } from "../../modules/articleManager";
-import { getUserFriends } from "../../modules/friendsListManager";
+import './Article.css'
+import { useHistory } from "react-router"
+import { deleteArticle, getUserArticles } from "../../modules/articleManager"
+import { getUserFriends } from "../../modules/friendsListManager"
 import { ArticleCard } from "./ArticleCards"
-import "./Articles.css"
 
 
 export const ArticleList = () => {
@@ -62,7 +62,7 @@ export const ArticleList = () => {
 
     return (
         <section className="articleList">
-            <button type="button" className="btn"
+            <button type="button" className="article-btn"
                 onClick={() => { history.push("/articles/create") }}>
                 Add Article
             </button>

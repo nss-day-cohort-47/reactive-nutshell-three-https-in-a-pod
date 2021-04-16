@@ -76,7 +76,7 @@ export const TaskForm = () => {
                         onChange={handleInputChange} />
                 </div>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="article-btn"
                 onClick={handleSaveTask}
                 disabled={isLoading}>
                 Save Task
