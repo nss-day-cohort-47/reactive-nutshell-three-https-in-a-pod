@@ -18,8 +18,8 @@ export const TaskCard = ({task, handleDelete, handleUpdate}) => {
                                                    name="checkbox" 
                                                    
                                                    onChange={() => handleUpdate(task)} /></label>
-        <Link to={`/tasks/${task.id}/edit`}><button className="btn">Edit</button></Link>
-        <button type="button" className="btn btn-primary" onClick={() => handleDelete(task.id)}>Remove</button>
+        <Link to={`/tasks/${task.id}/edit`}><button className="article-btn">Edit</button></Link>
+        <button type="button" className="article-btn" onClick={() => handleDelete(task.id)}>Remove</button>
     </section>
     )
 

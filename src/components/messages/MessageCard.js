@@ -6,7 +6,7 @@ export const MessageCard = ({message, handleDelete}) => {
     return (
         <section className="messageCard">
             <div className="message">{message.user.name}: {message.message}
-            <button type="button" className="btn btn-primary" onClick={() => handleDelete(message.id)}>Delete</button>
+            <button type="button" className="article-btn" onClick={() => handleDelete(message.id)}>Delete</button>
             </div>
         </section>
     )

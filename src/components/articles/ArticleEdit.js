@@ -76,7 +76,7 @@ export const ArticleEdit = () => {
                            value={article.url} />
                 </div>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="article-btn"
                     onClick={handleUpdateArticle}
                     disabled={isLoading}>
                         Update Article

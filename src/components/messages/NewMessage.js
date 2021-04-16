@@ -47,7 +47,7 @@ export const NewMessageInput = ({getMessages}) => {
                            onChange={handleInputChange} />
                 </label>
             <button type="button" 
-                        className="btn btn-primary"
+                        className="article-btn"
                         disabled={isLoading} 
                         onClick={handleAddMessage}>
                             Send

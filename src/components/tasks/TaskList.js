@@ -55,7 +55,7 @@ export const TaskList = () => {
 
     return (
         <section className="taskList">
-            <button type="button" className="btn"
+            <button type="button" className="article-btn"
                     onClick={() => history.push("/tasks/create")}>
                         Add New Task</button>
                 <h3 className="header">To Do List</h3>

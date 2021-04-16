@@ -105,10 +105,10 @@ export const EventEditForm = () => {
                     <button
                         type="button" disabled={isLoading}
                         onClick={updateExistingEvent}
-                        className="btn btn-primary"
+                        className="article-btn"
                     >Submit</button>
                 </div>
-                <button className="btn btn-primary"
+                <button className="article-btn"
 				    onClick={handleCancelSave}>
 				    Cancel
                 </button>
