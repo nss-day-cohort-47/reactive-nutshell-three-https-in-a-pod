@@ -66,7 +66,8 @@ export const MessageList = () => {
 
     return (
         <section className="messageList">
-            <h2>Message Board</h2>
+            <h2 className="messageHeader">Message Board</h2><hr></hr>
+            <div className="messageBottom">
             {messages.map(message =>
                <MessageCard
                key={message.id}
@@ -77,10 +78,10 @@ export const MessageList = () => {
                
                 /> )}
 
-            <NewMessageInput    getMessages={getMessages}
-                                checkForFriend={checkForFriend}/>
-                              
-            
+            </div> 
+            <div className="messageInput">
+                <NewMessageInput getMessages={getMessages} />
+            </div>                  
         </section>
     )
 }

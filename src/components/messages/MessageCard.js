@@ -13,14 +13,17 @@ export const MessageCard = ({message, handleDelete, checkForFriend, handleAddFri
             <div className="message"> { checkForFriend(message) ? <>{message.user.name} </>:<button type="button" className="article-btn" onClick={() => handleAddFriend(message.userId)}>{message.user.name}</button>} : {message.message}
             {message.userId === loggedInUser ? 
             <>
+            <div className="message-btns">
                 <Link to={`/messages/${message.id}/edit`}>
-                <button type="button" >Edit</button>
+                <button type="button" className="message-btn">Edit</button>
                 </Link>
                 <button type="button" 
-                        className="article-btn" 
+                        className="message-btn" 
                         onClick={() => handleDelete(message.id)}>
                             Delete
                 </button>
+
+            </div>
             </>
             : null
         }</div>

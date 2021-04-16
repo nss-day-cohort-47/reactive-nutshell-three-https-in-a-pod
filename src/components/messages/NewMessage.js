@@ -39,20 +39,20 @@ export const NewMessageInput = ({getMessages}) => {
     return (
         <div className="newMessageInput">
                 <label htmlFor="newMessage">
+                    </label>
                     <input type="text"
                            id="message"
                            className="newMessage"
                            placeholder="New Message"
                            value={newMessage.message}
                            onChange={handleInputChange} />
-                </label>
             <button type="button" 
                         className="article-btn"
                         disabled={isLoading} 
                         onClick={handleAddMessage}>
                             Send
             </button>
-            </div>
+        </div>
     )
 }
 
