@@ -41,7 +41,7 @@ color: whitesmoke;
 }
 
 .messageList {
-    border: 1px solid #afa37c;
+    border: 5px solid #afa37c;
     position: absolute;
     top: 50px; /* Header Height */
     bottom: 50px; /* Footer Height */
