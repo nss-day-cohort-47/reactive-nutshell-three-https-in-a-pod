@@ -9,6 +9,7 @@ import { getUserFriends, addFriend} from '../../modules/friendsListManager'
 
 export const MessageList = () => {
 
+    const [isFriends, setIsFriends] = useState([])
     const [messages, setMessages] = useState([])
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
     
@@ -19,23 +20,26 @@ export const MessageList = () => {
         })
     }
     
-    const checkForFriend = (message) => {
+    const getMessageFriends = () => {
         return getUserFriends(loggedInUser)
-        .then(friends => {
+        .then(friends => setIsFriends(friends))
+    }
+            
+            
+    const checkForFriend = (message) => {         
             let isFriend =false
             let checkedfriends = []
-            checkedfriends = friends.filter(friend =>
+            checkedfriends = isFriends.filter(friend =>
                 friend.userId === message.userId)
-            console.log(checkedfriends.length)
+ 
             if (checkedfriends.length > 0) {
                 isFriend = true
+            } else if (message.userId === loggedInUser) {
+                isFriend = true
             }
-            console.log(isFriend)
         return isFriend
-        })
-      
-    }
-    console.log(checkForFriend())
+        }
+    
 
     const handleAddFriend = (id) => {
         const newFriend = {
@@ -44,8 +48,9 @@ export const MessageList = () => {
         }
         let yes = window.confirm("Are you sure you would like to add them as a friend")
         if (yes === true) {
-            addFriend(newFriend)
-            getMessages()
+            addFriend(newFriend).then(()=>{
+                getMessages()
+            })
         }
 
         
@@ -58,9 +63,11 @@ export const MessageList = () => {
         .then(() => getMessages())
     }
 
+    useEffect(() => {
+        getMessageFriends()
+    }, [messages])
 
     useEffect(() => {
-        // console.log(messages)
         getMessages()
     }, [])
 
