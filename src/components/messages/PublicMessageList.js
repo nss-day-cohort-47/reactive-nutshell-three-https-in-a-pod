@@ -20,20 +20,22 @@ export const MessageList = () => {
     }
     
     const checkForFriend = (message) => {
-        let isFriend =false
-        getUserFriends(loggedInUser)
+        return getUserFriends(loggedInUser)
         .then(friends => {
+            let isFriend =false
             let checkedfriends = []
             checkedfriends = friends.filter(friend =>
                 friend.userId === message.userId)
             console.log(checkedfriends.length)
-            if (checkedfriends.userId > 0) {
+            if (checkedfriends.length > 0) {
                 isFriend = true
             }
-
-        })
+            console.log(isFriend)
         return isFriend
+        })
+      
     }
+    console.log(checkForFriend())
 
     const handleAddFriend = (id) => {
         const newFriend = {
