@@ -22,6 +22,7 @@ export const NewMessageInput = ({getMessages}) => {
 
     const handleAddMessage = (event) => {
         event.preventDefault()
+        localStorage.setItem("new_message", true)
         setIsLoading(true)
         addMessage(newMessage)
         .then(() => {
