@@ -92,11 +92,11 @@ export const EventEntry = () => {
                             value={events.eventtime} />                 
                 </div> */}
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="article-btn"
 				onClick={handleSaveEvent}>
 				Save Entry
             </button>
-            <button className="btn btn-primary"
+            <button className="article-btn"
 				onClick={handleCancelSave}>
 				Cancel
             </button>

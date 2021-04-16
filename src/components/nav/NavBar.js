@@ -29,7 +29,7 @@ export const NavBar = (props) => {
           <Link className="nav-link" to="/events">Events</Link>
         </li>
         <li className="navbar-item">
-          <button type="button" className="btn" onClick={handleLogout}> Logout </button>
+          <button type="button" className="article-btn" onClick={handleLogout}> Logout </button>
         </li>
       </ul>
     </nav>

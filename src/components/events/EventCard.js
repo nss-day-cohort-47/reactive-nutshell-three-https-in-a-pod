@@ -15,9 +15,9 @@ export const EventCard = ({event, deleteSetEvent, loggedInUser, index, getDailyW
                 <p className="event-eventdate">Date: {event.eventdate} at {event.eventtime} </p>
                 <p className="event-location">Location: {event.location}</p>
                 <p className="event-posted">Posted by: {event.user.name} </p>
-                <button type="button" className="btn" onClick={() => getDailyWeather(event)}>Get Weather</button>
-                {loggedInUser === event.userId ? <><Link to={`/events/${event.id}/edit`}><button className="btn">Edit</button></Link>
-                <button type="button" className="btn" onClick={() => deleteSetEvent(event.id)}>Delete</button> </> : ""}
+                <button type="button" className="article-btn" onClick={() => getDailyWeather(event)}>Get Weather</button>
+                {loggedInUser === event.userId ? <><Link to={`/events/${event.id}/edit`}><button className="article-btn">Edit</button></Link>
+                <button type="button" className="article-btn" onClick={() => deleteSetEvent(event.id)}>Delete</button> </> : ""}
             </article>
             <hr /><hr />
         </>
@@ -32,8 +32,8 @@ export const EventCard = ({event, deleteSetEvent, loggedInUser, index, getDailyW
             <p className="user-event-eventdate">Date: {event.eventdate} at {event.eventtime} </p>
             <p className="user-event-location">Location: {event.location}</p>
             <p className="user-event-posted">Posted by: {event.user.name} </p>
-                <Link to={`/events/${event.id}/edit`}><button className="btn">Edit</button></Link>
-                <button type="button" className="btn"onClick={() => deleteSetEvent(event.id)}>Delete</button> 
+                <Link to={`/events/${event.id}/edit`}><button className="article-btn">Edit</button></Link>
+                <button type="button" className="article-btn"onClick={() => deleteSetEvent(event.id)}>Delete</button> 
             {index === 0 ? <><hr /><hr /></>: ""}
         </article>
         </> : <>

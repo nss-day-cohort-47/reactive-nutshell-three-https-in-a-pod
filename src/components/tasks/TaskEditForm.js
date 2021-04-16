@@ -76,7 +76,7 @@ export const TaskEditForm = () => {
                            value={task.completedby} />
                 </div>
             </fieldset>
-            <button className="btn btn-primary"
+            <button className="article-btn"
                     onClick={handleUpdate}
                     disabled={isLoading}>
                         Update Task

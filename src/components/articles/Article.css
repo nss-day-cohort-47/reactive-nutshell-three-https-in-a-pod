@@ -10,17 +10,14 @@
     margin: 2em;
     border: 1px solid cornsilk;
     background-color:  #afa37c;
-    color: black
+    color: black;
 }
 
-.btn {
+.article-btn {
     background-color: #BC4123;
     color: whitesmoke;
 }
 
-body {
-    background-color:  #213555;
-}
 
 .articleFormTitle {
 color: whitesmoke;
@@ -35,5 +32,9 @@ color: whitesmoke;
 }
 
 .editFormTitle {
+    color: whitesmoke;
+}
+
+.message {
     color: whitesmoke;
 }
