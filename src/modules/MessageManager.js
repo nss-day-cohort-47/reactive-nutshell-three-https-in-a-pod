@@ -6,6 +6,11 @@ export const getAllMessages = () => {
     .then(response => response.json())
 }
 
+export const getMessageById = (messageId) => {
+    return fetch(`${url}/messages/${messageId}`)
+    .then(response => response.json())
+}
+
 export const deleteMessage = (id) => {
     return fetch(`${url}/messages/${id}`, {
         method: "DELETE"
@@ -22,4 +27,14 @@ export const addMessage = (newMessage) => {
         body: JSON.stringify(newMessage)
     })
     .then(response => response.json())
+}
+
+export const updateMessage = (msgObj) => {
+    return fetch(`${url}/messages/${msgObj.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(msgObj)
+    }).then(response => response.json())
 }

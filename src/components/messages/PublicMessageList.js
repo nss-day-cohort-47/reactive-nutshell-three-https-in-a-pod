@@ -1,7 +1,7 @@
 // Ethan Mathis -- purpose is to render all public messages in one board and allow users to post new messages
 
 import React, { useEffect, useState } from 'react'
-import { getAllMessages, deleteMessage } from "../../modules/MessageManager"
+import { getAllMessages, deleteMessage, updateMessage, getMessageById } from "../../modules/MessageManager"
 import { MessageCard } from './MessageCard'
 import { NewMessageInput } from './NewMessage'
 import { getUserFriends, addFriend} from '../../modules/friendsListManager'
@@ -58,6 +58,7 @@ export const MessageList = () => {
 
 
     useEffect(() => {
+        // console.log(messages)
         getMessages()
     }, [])
 
@@ -71,6 +72,7 @@ export const MessageList = () => {
                handleAddFriend={handleAddFriend}
                message={message}
                handleDelete={handleDelete}
+               
                 /> )}
 
             <NewMessageInput    getMessages={getMessages}
