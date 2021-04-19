@@ -11,6 +11,7 @@ export const MessageList = () => {
 
     const [isFriends, setIsFriends] = useState([])
     const [messages, setMessages] = useState([])
+    const [storage, setStorage] = useState(false)
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
     
     const getMessages = () => {
@@ -57,6 +58,25 @@ export const MessageList = () => {
         
     }
     
+    const checkStorage = () => {
+        if(localStorage.getItem("new_message") === "true") {
+            console.log("working")
+            setStorage(true)
+            return true
+        }
+        return false
+    }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (checkStorage() === true) {
+                getMessages().then(() => {
+                    localStorage.setItem("new_message", false)
+                })
+            }
+        }, 100);
+        return () => clearInterval(interval);
+    }, []);
     
     const handleDelete = (id) => {
         return deleteMessage(id)
@@ -65,7 +85,7 @@ export const MessageList = () => {
 
     useEffect(() => {
         getMessageFriends()
-    }, [messages])
+    }, [storage, messages])
 
     useEffect(() => {
         getMessages()

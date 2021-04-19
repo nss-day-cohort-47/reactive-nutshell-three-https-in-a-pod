@@ -66,7 +66,7 @@ color: whitesmoke;
 
 .messageBottom {
     bottom:0px;
-  max-height:800px;
+  max-height:95%;
   overflow:auto;
   position:absolute;
   width:100%;
