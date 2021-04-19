@@ -85,7 +85,7 @@ export const MessageList = () => {
 
     useEffect(() => {
         getMessageFriends()
-    }, [storage])
+    }, [storage, messages])
 
     useEffect(() => {
         getMessages()
