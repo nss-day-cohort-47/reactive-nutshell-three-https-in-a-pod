@@ -18,12 +18,13 @@ export const MessageList = () => {
     const getMessages = () => {
         return getAllMessages()
         .then(allMessages => {
-            let publicmessages = allMessages.filter(message => message.friendId === 0)
+            let publicmessages = allMessages.filter(message => message.friendId === 0 && message.userId !== loggedInUser)
             let privatemessages = allMessages.filter(message => {
                 return message.friendId === loggedInUser || message.userId === loggedInUser})
             let totalmessages = []
             totalmessages = publicmessages.concat(privatemessages)
             totalmessages.sort((a, b) => (a.id > b.id) ? -1 : 1)
+            totalmessages = totalmessages.reverse()
             setMessages(totalmessages)
         })
     }
@@ -87,9 +88,11 @@ export const MessageList = () => {
     }, []);
     
     const handleDelete = (id) => {
+        console.log("delete them all", id)
         return deleteMessage(id)
         .then(() => getMessages())
     }
+
 
 
     const messagesEndRef = useRef(null)
@@ -97,13 +100,12 @@ export const MessageList = () => {
         messagesEndRef.current.scrollIntoView({behavior: "smooth"})
     }
     useEffect(() => {
-        scrollToBottom()
-        
+        scrollToBottom() 
     }, [messages])
 
     useEffect(() => {
         getMessageFriends()
-    }, [storage, messages])
+    }, [storage])
 
     useEffect(() => {
         getMessages()

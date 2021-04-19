@@ -19,6 +19,7 @@ export const MessageCard = ({message, handleDelete, checkForFriend, handleAddFri
                 </Link>
                 <button type="button" 
                         className="message-btn" 
+                        
                         onClick={() => handleDelete(message.id)}>
                             Delete
                 </button>
