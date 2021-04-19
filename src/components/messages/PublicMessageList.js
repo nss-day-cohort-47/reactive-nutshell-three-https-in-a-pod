@@ -1,10 +1,11 @@
 // Ethan Mathis -- purpose is to render all public messages in one board and allow users to post new messages
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { getAllMessages, deleteMessage, updateMessage, getMessageById } from "../../modules/MessageManager"
 import { MessageCard } from './MessageCard'
 import { NewMessageInput } from './NewMessage'
 import { getUserFriends, addFriend} from '../../modules/friendsListManager'
+
 
 
 export const MessageList = () => {
@@ -83,6 +84,16 @@ export const MessageList = () => {
         .then(() => getMessages())
     }
 
+
+    const messagesEndRef = useRef(null)
+    const scrollToBottom = () => {
+        messagesEndRef.current.scrollIntoView({behavior: "smooth"})
+    }
+    useEffect(() => {
+        scrollToBottom()
+        
+    }, [messages])
+
     useEffect(() => {
         getMessageFriends()
     }, [storage, messages])
@@ -104,11 +115,11 @@ export const MessageList = () => {
                handleDelete={handleDelete}
                
                 /> )}
-
-            </div> 
+            <div ref={messagesEndRef} />
+            </div>                  
             <div className="messageInput">
                 <NewMessageInput getMessages={getMessages} />
-            </div>                  
+            </div> 
         </section>
     )
 }
