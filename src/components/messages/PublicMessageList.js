@@ -116,10 +116,10 @@ export const MessageList = () => {
                
                 /> )}
             <div ref={messagesEndRef} />
-            </div> 
+            </div>                  
             <div className="messageInput">
                 <NewMessageInput getMessages={getMessages} />
-            </div>                  
+            </div> 
         </section>
     )
 }
