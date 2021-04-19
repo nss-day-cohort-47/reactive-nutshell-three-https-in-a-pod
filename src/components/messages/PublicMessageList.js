@@ -91,7 +91,7 @@ export const MessageList = () => {
     }
     useEffect(() => {
         scrollToBottom()
-        console.log("messages")
+        
     }, [messages])
 
     useEffect(() => {
