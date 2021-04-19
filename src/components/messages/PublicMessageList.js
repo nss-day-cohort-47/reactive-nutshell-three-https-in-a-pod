@@ -66,28 +66,17 @@ export const MessageList = () => {
         
         
     }
-    
-    const checkStorage = () => {
-        if(localStorage.getItem("new_message") === "true") {
-            console.log("working")
-            setStorage(true)
-            return true
-        }
-        return false
-    }
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (checkStorage() === true) {
-                getMessages().then(() => {
+        window.addEventListener('storage', (event) => {
+            getMessages().then(() => {
                     localStorage.setItem("new_message", false)
-                })
-            }
-        }, 100);
-        return () => clearInterval(interval);
+            })
+        })
     }, []);
     
     const handleDelete = (id) => {
+        localStorage.setItem("new_message", true)
         console.log("delete them all", id)
         return deleteMessage(id)
         .then(() => getMessages())

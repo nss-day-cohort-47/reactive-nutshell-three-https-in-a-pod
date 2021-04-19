@@ -19,6 +19,7 @@ export const EditMessageCard = () => {
     }
 
     const handleSaveMessage = (event) => {
+        localStorage.setItem("new_message", true)
         event.preventDefault()
         setIsLoading(true)
         const editedMessage = {
