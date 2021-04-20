@@ -63,8 +63,8 @@ export const MessageList = () => {
         let yes = window.confirm("Are you sure you would like to add them as a friend")
         if (yes === true) {
             addFriend(newFriend).then(()=>{
-                checkForFriend()
-                localStorage.setItem("new_message", true) 
+                getMessages().then(()=> localStorage.setItem("new_message", true))
+                
             })
         }
 
