@@ -25,7 +25,6 @@ export const EventEntry = () => {
 
     const handleSaveEvent = (click) => {
         click.preventDefault()
-        console.log(events)
         if (events.title === "" || events.message === "" || events.location === "" || events.eventdate === "" || events.eventtime === "") {
             window.alert("Please fill in all fields")
         } else {createEvent(events).then(() => history.push('/events'))

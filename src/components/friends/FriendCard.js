@@ -3,7 +3,6 @@ import React from "react"
 import "./Friends.css"
 
 export const FriendCard = ({friend, handleDelete}) => {
-    // console.log(friend)
     return (
         <article className="friendName">
             <h3>{friend.user.name}</h3>

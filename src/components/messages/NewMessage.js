@@ -37,7 +37,6 @@ export const NewMessageInput = ({getMessages, isFriends}) => {
                     message: actualMessage,
                     friendId: friendObj[0].userId
                 }
-                console.log("updated state", pm)
             }
             // setNewMessage(pm)
         }
@@ -47,11 +46,11 @@ export const NewMessageInput = ({getMessages, isFriends}) => {
     const handleAddMessage = (event) => {
         event.preventDefault()
         const messageToAdd = checkForPrivateMessage()
-        localStorage.setItem("new_message", true)
         setIsLoading(true)
         addMessage(messageToAdd)
         .then(() => {
             getMessages()
+            localStorage.setItem("new_message", true)
             setIsLoading(false)
             setNewMessage({
                 userId: loggedInUser,

@@ -24,10 +24,13 @@ export const EditMessageCard = () => {
         const editedMessage = {
             id: editMessage.id,
             userId: loggedInUser,
+            friendId: editMessage.friendId,
             message: editMessage.message
         }
         updateMessage(editedMessage)
-        .then(() => history.push("/messages"))
+        .then(() => {
+            localStorage.setItem("new_message", true)
+            history.push("/messages")})
     }
 
     useEffect(() => {
