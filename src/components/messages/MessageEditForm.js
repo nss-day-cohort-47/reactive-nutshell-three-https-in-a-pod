@@ -19,16 +19,18 @@ export const EditMessageCard = () => {
     }
 
     const handleSaveMessage = (event) => {
-        localStorage.setItem("new_message", true)
         event.preventDefault()
         setIsLoading(true)
         const editedMessage = {
             id: editMessage.id,
             userId: loggedInUser,
+            friendId: editMessage.friendId,
             message: editMessage.message
         }
         updateMessage(editedMessage)
-        .then(() => history.push("/messages"))
+        .then(() => {
+            localStorage.setItem("new_message", true)
+            history.push("/messages")})
     }
 
     useEffect(() => {

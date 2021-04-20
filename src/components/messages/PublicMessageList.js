@@ -1,7 +1,7 @@
 // Ethan Mathis -- purpose is to render all public messages in one board and allow users to post new messages
 
 import React, { useEffect, useState, useRef } from 'react'
-import { getAllMessages, deleteMessage, updateMessage, getMessageById } from "../../modules/MessageManager"
+import { getAllMessages, deleteMessage} from "../../modules/MessageManager"
 import { MessageCard } from './MessageCard'
 import { NewMessageInput } from './NewMessage'
 import { getUserFriends, addFriend} from '../../modules/friendsListManager'
@@ -15,10 +15,14 @@ export const MessageList = () => {
     const [storage, setStorage] = useState(false)
     const loggedInUser = JSON.parse(sessionStorage.getItem("nutshell_user"))
     
+    localStorage.setItem("new_message", false)
     const getMessages = () => {
         return getAllMessages()
         .then(allMessages => {
+
+            // Retrieve all of the messages with a public designation, excluding messages sent by the user
             let publicmessages = allMessages.filter(message => message.friendId === 0 && message.userId !== loggedInUser)
+            // Retrieve private messages that the friendId is that of the logged in user including the logged in users messages.
             let privatemessages = allMessages.filter(message => {
                 return message.friendId === loggedInUser || message.userId === loggedInUser})
             let totalmessages = []
@@ -35,7 +39,7 @@ export const MessageList = () => {
     }
     
     
-            
+    //Logan Demmy- Compare the userId of the message against the id of the all of the friends. If the friend object exists set state isFriend        
     const checkForFriend = (message) => {         
             let isFriend =false
             let checkedfriends = []
@@ -50,7 +54,7 @@ export const MessageList = () => {
         return isFriend
         }
     
-
+    // Logan Demmy - create a friend object and then add them with a confirmation alert window.
     const handleAddFriend = (id) => {
         const newFriend = {
             currentUserId: loggedInUser,
@@ -69,17 +73,14 @@ export const MessageList = () => {
 
     useEffect(() => {
         window.addEventListener('storage', (event) => {
-            getMessages().then(() => {
-                    localStorage.setItem("new_message", false)
-            })
+            getMessages()
         })
     }, []);
     
     const handleDelete = (id) => {
-        localStorage.setItem("new_message", true)
-        console.log("delete them all", id)
         return deleteMessage(id)
-        .then(() => getMessages())
+        .then(() => getMessages()
+        .then(()=>localStorage.setItem("new_message", true)))
     }
 
 

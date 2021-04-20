@@ -10,6 +10,7 @@ export const MessageCard = ({message, handleDelete, checkForFriend, handleAddFri
 
     return (
         <section className="messageCard">
+            {/* Turinary statement to check for if the logged in user is friend with the person who sent the message. Also if the message was sent by the logged in user */}
             <div className="message"> { checkForFriend(message) ? <>{message.userId === loggedInUser ? "YOU: " : <>{message.user.name}</>}</> :<button type="button" className="article-btn" onClick={() => handleAddFriend(message.userId)}>{message.userId === loggedInUser ? "YOU: " : <>{message.user.name}</>} <>{message.user.name} </></button>} : {message.message}
             {message.userId === loggedInUser ? 
             <>
